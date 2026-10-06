@@ -15,7 +15,9 @@
 	const m = getMessages(locale);
 
 	let weather = $state<Awaited<ReturnType<typeof getWeather>>>(null);
-	let info = $derived(weather ? getWeatherDescriptionKey(weather.current?.weather_code || 0) : null);
+	let info = $derived(
+		weather ? getWeatherDescriptionKey(weather.current?.weather_code || 0) : null
+	);
 	let isNight = $derived(weather ? !weather.current?.is_day : true);
 	let expanded = $state(false);
 	let hovered = $state(false);
@@ -35,59 +37,77 @@
 	});
 </script>
 
-{#if !weather}
-	<WeatherSkeleton />
-{/if}
-
-{#if weather && info}
-	<button
-		class="widget"
-		aria-label={m['weather_aria_label']}
-		onmouseenter={() => (hovered = true)}
-		onmouseleave={() => (hovered = false)}
-		onclick={() => (expanded = true)}
-		bind:this={widgetElement}
-	>
-		<div class="glow" class:glow-active={hovered}></div>
-
-		<WeatherHeader {info} {m} />
-
-		<div class="temp-section">
-			<div class="temp-row">
-				<WeatherIcon {isNight} {hovered} />
-				<TemperatureDisplay temp={weather.current.temp} apparentTemp={weather.current.apparent_temp} {m} />
-			</div>
-		</div>
-
-		<div class="divider"></div>
-
-		<WeatherStats windSpeed={weather.current.wind_speed} precipitation={weather.current.precipitation} {m} />
-	</button>
-
-	<ForecastToggle {expanded} {theme} onToggle={() => (expanded = !expanded)} {m} />
-
-	{#if expanded}
-		<button
-			class="backdrop"
-			onclick={() => (expanded = false)}
-			onkeydown={(e) => e.key === 'Escape' && (expanded = false)}
-			aria-label={m['weather_close']}
-		></button>
-		<div class="modal" data-theme={theme}>
-			<div class="modal-content">
-				<div class="modal-header">
-					<h2 class="modal-title">{m['weather_forecast_title']}</h2>
-					<button class="modal-close" onclick={() => (expanded = false)} aria-label={m['weather_close']}>
-						<X size={20} />
-					</button>
-				</div>
-				<ForecastContainer forecast={weather.forecast} />
-			</div>
-		</div>
+<div class="weather-reserved">
+	{#if !weather}
+		<WeatherSkeleton />
 	{/if}
-{/if}
+
+	{#if weather && info}
+		<button
+			class="widget"
+			aria-label={m['weather_aria_label']}
+			onmouseenter={() => (hovered = true)}
+			onmouseleave={() => (hovered = false)}
+			onclick={() => (expanded = true)}
+			bind:this={widgetElement}
+		>
+			<div class="glow" class:glow-active={hovered}></div>
+
+			<WeatherHeader {info} {m} />
+
+			<div class="temp-section">
+				<div class="temp-row">
+					<WeatherIcon {isNight} {hovered} />
+					<TemperatureDisplay
+						temp={weather.current.temp}
+						apparentTemp={weather.current.apparent_temp}
+						{m}
+					/>
+				</div>
+			</div>
+
+			<div class="divider"></div>
+
+			<WeatherStats
+				windSpeed={weather.current.wind_speed}
+				precipitation={weather.current.precipitation}
+				{m}
+			/>
+		</button>
+
+		<ForecastToggle {expanded} {theme} onToggle={() => (expanded = !expanded)} {m} />
+
+		{#if expanded}
+			<button
+				class="backdrop"
+				onclick={() => (expanded = false)}
+				onkeydown={(e) => e.key === 'Escape' && (expanded = false)}
+				aria-label={m['weather_close']}
+			></button>
+			<div class="modal" data-theme={theme}>
+				<div class="modal-content">
+					<div class="modal-header">
+						<h2 class="modal-title">{m['weather_forecast_title']}</h2>
+						<button
+							class="modal-close"
+							onclick={() => (expanded = false)}
+							aria-label={m['weather_close']}
+						>
+							<X size={20} />
+						</button>
+					</div>
+					<ForecastContainer forecast={weather.forecast} />
+				</div>
+			</div>
+		{/if}
+	{/if}
+</div>
 
 <style>
+	.weather-reserved {
+		min-height: 23rem;
+	}
+
 	.widget {
 		position: relative;
 		overflow: hidden;
@@ -99,7 +119,10 @@
 		border: 1px solid var(--weather-border);
 		padding: 24px;
 		color: var(--weather-text-light);
-		font-family: system-ui, -apple-system, sans-serif;
+		font-family:
+			system-ui,
+			-apple-system,
+			sans-serif;
 		box-shadow:
 			0 4px 24px rgba(0, 0, 0, 0.3),
 			0 1px 2px rgba(0, 0, 0, 0.2);
@@ -150,12 +173,7 @@
 
 	.divider {
 		height: 1px;
-		background: linear-gradient(
-			to right,
-			transparent,
-			var(--weather-divider),
-			transparent
-		);
+		background: linear-gradient(to right, transparent, var(--weather-divider), transparent);
 	}
 
 	@media screen and (min-width: 1024px) {
