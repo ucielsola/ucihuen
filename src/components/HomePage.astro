@@ -6,6 +6,7 @@ import InstagramEmbed from './InstagramEmbed.astro';
 import Faq from './Faq.astro';
 import Weather from './WeatherIsland.svelte';
 import SliderReviews from './SliderReviews.svelte';
+import { AIRBNB_URL, BOOKING_URL, WHATSAPP_URL } from '../lib/config';
 
 interface Props {
 	locale: string;
@@ -41,6 +42,27 @@ const { locale, m } = Astro.props;
 			</a>
 			{m.home_desc_2_after}
 		</p>
+		<div class="booking-actions" aria-label={m.booking_actions_label}>
+			<a
+				class="booking-action booking-action--primary"
+				href={BOOKING_URL}
+				target="_blank"
+				rel="noopener noreferrer nofollow"
+			>
+				{m.booking_booking}
+			</a>
+			<a
+				class="booking-action"
+				href={AIRBNB_URL}
+				target="_blank"
+				rel="noopener noreferrer nofollow"
+			>
+				{m.booking_airbnb}
+			</a>
+			<a class="booking-action" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+				{m.booking_whatsapp}
+			</a>
+		</div>
 	</section>
 
 	<section class="icon-grid">
@@ -55,7 +77,12 @@ const { locale, m } = Astro.props;
 			<Weather client:visible locale={locale} />
 			<InstagramEmbed />
 		</div>
-		<img src="/images/vertical_banner.webp" alt={m.home_vertical_banner_alt} />
+		<img
+			src="/images/vertical_banner.webp"
+			width="979"
+			height="1565"
+			alt={m.home_vertical_banner_alt}
+		/>
 	</section>
 </div>
 
@@ -119,6 +146,30 @@ const { locale, m } = Astro.props;
 	a {
 		color: var(--primary-color);
 		text-decoration: none;
+	}
+
+	.booking-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.65rem;
+		margin-block-start: 1.25rem;
+	}
+
+	.booking-action {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.75rem;
+		padding: 0.65rem 1rem;
+		border: 1px solid var(--primary-color);
+		border-radius: var(--radius-sm);
+		font-weight: 600;
+		text-align: center;
+	}
+
+	.booking-action--primary {
+		background: var(--primary-color);
+		color: white;
 	}
 
 	h3 {

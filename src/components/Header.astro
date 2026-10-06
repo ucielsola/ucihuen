@@ -15,6 +15,9 @@ const m = getMessages(locale);
 	<img
 		class="cover"
 		src="/images/cover.webp"
+		width="2048"
+		height="750"
+		fetchpriority="high"
 		alt="Cabañas Ucihuen - Lago Puelo"
 	/>
 	<iframe
@@ -23,12 +26,19 @@ const m = getMessages(locale);
 		title="Video de fondo - Cabañas Ucihuen"
 		frameborder="0"
 		allow="autoplay; encrypted-media"
-		loading="lazy"
-	></iframe>
+		loading="lazy"></iframe>
 	<div class="row">
 		<div class="logo">
 			<a href={localizeHref('/', locale)} title={m.header_home_title}>
-				{heading ? <h1>{heading}</h1> : <div class="brand">Cabañas <span>Ucihuen</span></div>}
+				{
+					heading ? (
+						<h1>{heading}</h1>
+					) : (
+						<div class="brand">
+							Cabañas <span>Ucihuen</span>
+						</div>
+					)
+				}
 			</a>
 		</div>
 		<p class="copy">

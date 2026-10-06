@@ -1,0 +1,121 @@
+---
+import { AIRBNB_URL, BOOKING_URL, PHONE, WHATSAPP_URL } from '../lib/config';
+import { excursions } from '../lib/data/excursions';
+import { getMessages } from '../lib/messages';
+
+const { locale } = Astro.props;
+const m = getMessages(locale);
+const toolTitles = {
+	stay: m.webmcp_stay_tool_title,
+	booking: m.webmcp_booking_tool_title,
+	excursions: m.webmcp_excursions_tool_title
+};
+
+const agentSiteData = {
+	stay: {
+		name: 'Cabañas Ucihuen',
+		location: m.faq_location_answer,
+		capacity: [m.cabin_7_title, m.cabin_4_title],
+		amenities: m.home_amenities_desc,
+		nearby: m.home_desc_2_after
+	},
+	booking: {
+		message: m.booking_agent_availability,
+		options: [
+			{ name: 'Booking.com', url: BOOKING_URL },
+			{ name: 'Airbnb', url: AIRBNB_URL },
+			{ name: 'WhatsApp', url: WHATSAPP_URL, phone: PHONE }
+		]
+	},
+	excursions: excursions.map((excursion) => ({
+		name: m[excursion.titleKey],
+		description: m[excursion.descKey],
+		categories: excursion.tagKeys.map((key) => m[key]),
+		directions: excursion.mapsUrl,
+		website: excursion.websiteUrl
+	}))
+};
+---
+
+<script define:vars={{ agentSiteData, toolTitles }}>
+	const modelContext = document.modelContext || navigator.modelContext;
+	if (modelContext) {
+		void (async () => {
+			const readOnly = { readOnlyHint: true };
+			try {
+				await modelContext.registerTool({
+					name: 'get_stay_information',
+					title: toolTitles.stay,
+					description:
+						'Return verified, published information about Cabañas Ucihuen, its location, capacity, amenities and nearby Lago Puelo National Park.',
+					inputSchema: {
+						type: 'object',
+						properties: {
+							topic: {
+								type: 'string',
+								enum: ['all', 'location', 'capacity', 'amenities', 'nearby'],
+								description: 'Which part of the published stay information to return.'
+							}
+						},
+						additionalProperties: false
+					},
+					annotations: readOnly,
+					execute: ({ topic = 'all' }) => {
+						if (topic === 'all') return agentSiteData.stay;
+						return { [topic]: agentSiteData.stay[topic] };
+					}
+				});
+
+				await modelContext.registerTool({
+					name: 'get_booking_options',
+					title: toolTitles.booking,
+					description:
+						'Return the official Booking.com, Airbnb and WhatsApp contact links for Cabañas Ucihuen. Does not check availability or make a reservation.',
+					inputSchema: { type: 'object', properties: {}, additionalProperties: false },
+					annotations: readOnly,
+					execute: () => agentSiteData.booking
+				});
+
+				await modelContext.registerTool({
+					name: 'find_local_excursions',
+					title: toolTitles.excursions,
+					description:
+						'Search the excursions published by Cabañas Ucihuen near Lago Puelo. Returns descriptions and official map or destination links; does not check current opening hours or conditions.',
+					inputSchema: {
+						type: 'object',
+						properties: {
+							query: {
+								type: 'string',
+								maxLength: 120,
+								description:
+									'A destination or activity, such as a beach, trail, market or national park.'
+							}
+						},
+						required: ['query'],
+						additionalProperties: false
+					},
+					annotations: readOnly,
+					execute: ({ query }) => {
+						const safeQuery = typeof query === 'string' ? query.slice(0, 120).trim() : '';
+						if (!safeQuery) return { query: '', results: [] };
+						const normalizedQuery = safeQuery
+							.normalize('NFD')
+							.replace(/\p{Diacritic}/gu, '')
+							.toLocaleLowerCase();
+						const results = agentSiteData.excursions.filter((excursion) =>
+							[excursion.name, excursion.description, ...excursion.categories]
+								.join(' ')
+								.normalize('NFD')
+								.replace(/\p{Diacritic}/gu, '')
+								.toLocaleLowerCase()
+								.includes(normalizedQuery)
+						);
+						return { query: safeQuery, results };
+					}
+				});
+			} catch {
+				// WebMCP is optional; the regular page and its links work without it.
+			}
+		})();
+	}
+</script>

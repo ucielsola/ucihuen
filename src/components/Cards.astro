@@ -32,26 +32,29 @@ const cards = [
 ---
 
 <div class="container">
-	{cards.map((card) => (
-		<a class="card" href={localizeHref('/galeria#' + card.id, locale)}>
-			<div class="title-container">
-				<img loading="lazy" src={card.image} alt={card.alt} />
-				<div class="gradient" />
-				<h3 class="mobile-title">
-					{m.cabin_mobile_title_prefix} <br />{card.mobileGuests}
-				</h3>
-			</div>
-			<div class="description">
-				<div class="title-wrapper">
-					<h3 class="desktop-title">{card.title}</h3>
-					<h4>{card.floors}</h4>
+	{
+		cards.map((card) => (
+			<a class="card" href={localizeHref('/galeria#' + card.id, locale)}>
+				<div class="title-container">
+					<img loading="lazy" width="439" height="439" src={card.image} alt={card.alt} />
+					<div class="gradient" />
+					<h3 class="mobile-title">
+						{m.cabin_mobile_title_prefix} <br />
+						{card.mobileGuests}
+					</h3>
 				</div>
-				{card.rooms.map((room) => (
-					<h5>{room}</h5>
-				))}
-			</div>
-		</a>
-	))}
+				<div class="description">
+					<div class="title-wrapper">
+						<h3 class="desktop-title">{card.title}</h3>
+						<h4>{card.floors}</h4>
+					</div>
+					{card.rooms.map((room) => (
+						<h5>{room}</h5>
+					))}
+				</div>
+			</a>
+		))
+	}
 </div>
 
 <style>

@@ -26,3 +26,7 @@
 - Teléfono/WhatsApp: +54 9 11 3158-6242.
 
 Las tarifas y la disponibilidad cambian según la temporada; no las infieras ni las presentes como fijas. Para esos datos, dirigí a los canales de reserva oficiales.
+
+## Herramientas para agentes en navegadores compatibles
+
+La página publica herramientas WebMCP de solo lectura para consultar datos del alojamiento, obtener los enlaces oficiales de reserva y buscar paseos recomendados. No permiten confirmar disponibilidad, tarifas ni completar una reserva; para reservar, usá los canales enlazados arriba.
