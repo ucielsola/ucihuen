@@ -44,23 +44,31 @@ const { locale, m } = Astro.props;
 		</p>
 		<div class="booking-actions" aria-label={m.booking_actions_label}>
 			<a
-				class="booking-action booking-action--primary"
+				class="booking-action booking-action--whatsapp"
+				href={WHATSAPP_URL}
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<img class="booking-mark" src="/icons/whatsapp.webp" width="20" height="20" alt="" />
+				{m.booking_whatsapp}
+			</a>
+			<a
+				class="booking-action booking-action--booking"
 				href={BOOKING_URL}
 				target="_blank"
 				rel="noopener noreferrer nofollow"
 			>
+				<img class="booking-mark" src="/icons/booking.webp" width="89" height="22" alt="" />
 				{m.booking_booking}
 			</a>
 			<a
-				class="booking-action"
+				class="booking-action booking-action--airbnb"
 				href={AIRBNB_URL}
 				target="_blank"
 				rel="noopener noreferrer nofollow"
 			>
+				<img class="booking-mark" src="/icons/airbnb.webp" width="75" height="22" alt="" />
 				{m.booking_airbnb}
-			</a>
-			<a class="booking-action" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-				{m.booking_whatsapp}
 			</a>
 		</div>
 	</section>
@@ -159,17 +167,38 @@ const { locale, m } = Astro.props;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
+		gap: 0.5rem;
 		min-height: 2.75rem;
 		padding: 0.65rem 1rem;
-		border: 1px solid var(--primary-color);
+		border: 1px solid transparent;
 		border-radius: var(--radius-sm);
 		font-weight: 600;
 		text-align: center;
 	}
 
-	.booking-action--primary {
-		background: var(--primary-color);
-		color: white;
+	.booking-action--whatsapp {
+		border-color: #25d366;
+		background: #25d366;
+		color: #111;
+	}
+
+	.booking-action--booking {
+		border-color: #003b95;
+		background: #003b95;
+		color: #fff;
+	}
+
+	.booking-action--airbnb {
+		border-color: #222;
+		background: #fff;
+		color: #222;
+	}
+
+	.booking-mark {
+		flex: 0 0 auto;
+		width: auto;
+		height: 1.25rem;
+		box-shadow: none;
 	}
 
 	h3 {
@@ -228,6 +257,12 @@ const { locale, m } = Astro.props;
 		}
 
 		.vertical-banner img {
+			flex: 0 0 auto;
+			align-self: center;
+			width: 100%;
+			height: auto;
+			max-height: 32rem;
+			object-fit: contain;
 			border-radius: var(--radius-sm);
 			box-shadow: var(--shadow-sm);
 		}

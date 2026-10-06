@@ -51,13 +51,15 @@ const m = getMessages(locale);
 	function initHeader() {
 		const iframe = document.getElementById('yt-bg') as HTMLIFrameElement | null;
 		const cover = document.querySelector('.cover') as HTMLImageElement | null;
-		if (!iframe || !cover) return;
+		const overlay = document.querySelector('.row') as HTMLDivElement | null;
+		if (!iframe || !cover || !overlay) return;
 		iframe.src = iframe.dataset.src || '';
 
 		function onPlayerReady(player: any) {
 			player.setPlaybackRate(1.25);
 			iframe.classList.add('visible');
 			cover.classList.add('hidden');
+			overlay.classList.add('hidden');
 		}
 
 		(window as any).onYTPlayerReady = onPlayerReady;
@@ -84,6 +86,7 @@ const m = getMessages(locale);
 		setTimeout(() => {
 			iframe.classList.add('visible');
 			cover.classList.add('hidden');
+			overlay.classList.add('hidden');
 		}, 4000);
 	}
 
@@ -100,6 +103,7 @@ const m = getMessages(locale);
 	}
 	header {
 		position: relative;
+		height: clamp(12rem, 40vw, 28rem);
 		overflow: hidden;
 	}
 
@@ -107,7 +111,7 @@ const m = getMessages(locale);
 	iframe {
 		display: block;
 		width: 100%;
-		aspect-ratio: 16 / 9;
+		height: 100%;
 		border: none;
 		pointer-events: none;
 		object-fit: cover;
@@ -141,6 +145,12 @@ const m = getMessages(locale);
 		place-content: end;
 		padding-inline: var(--padding-inline);
 		padding-block-end: 0.5rem;
+		pointer-events: none;
+		transition: opacity 1s ease;
+	}
+
+	.row.hidden {
+		opacity: 0;
 		pointer-events: none;
 	}
 
