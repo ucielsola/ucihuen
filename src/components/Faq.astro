@@ -102,21 +102,18 @@ const questions = [
 			transform 0.2s ease;
 	}
 
-	.faq__indicator::before,
-	.faq__indicator::after {
+	.faq__indicator::before {
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		width: 0.7rem;
-		height: 2px;
-		border-radius: 2px;
-		background: var(--text-color-light);
+		width: 0.55rem;
+		height: 0.55rem;
+		border-right: 2px solid var(--text-color-light);
+		border-bottom: 2px solid var(--text-color-light);
+		background: transparent;
 		content: '';
-		transform: translate(-50%, -50%);
-	}
-
-	.faq__indicator::after {
-		transform: translate(-50%, -50%) rotate(90deg);
+		transform: translate(-50%, -65%) rotate(45deg);
+		transition: transform 0.2s ease;
 	}
 
 	.faq__item[open] {
@@ -125,11 +122,10 @@ const questions = [
 
 	.faq__item[open] .faq__indicator {
 		background: var(--primary-color);
-		transform: rotate(180deg);
 	}
 
-	.faq__item[open] .faq__indicator::after {
-		transform: translate(-50%, -50%) rotate(0deg);
+	.faq__item[open] .faq__indicator::before {
+		transform: translate(-50%, -35%) rotate(225deg);
 	}
 
 	.faq__answer {

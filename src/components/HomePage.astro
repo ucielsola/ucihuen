@@ -57,16 +57,18 @@ const { locale, m } = Astro.props;
 				href={BOOKING_URL}
 				target="_blank"
 				rel="noopener noreferrer nofollow"
+				aria-label={m.booking_booking}
 			>
-				{m.booking_booking}
+				<img class="booking-mark" src="/icons/booking.webp" width="89" height="22" alt="" />
 			</a>
 			<a
 				class="booking-action booking-action--airbnb"
 				href={AIRBNB_URL}
 				target="_blank"
 				rel="noopener noreferrer nofollow"
+				aria-label={m.booking_airbnb}
 			>
-				{m.booking_airbnb}
+				<img class="booking-mark" src="/icons/airbnb.webp" width="75" height="22" alt="" />
 			</a>
 		</div>
 	</section>
@@ -182,13 +184,13 @@ const { locale, m } = Astro.props;
 
 	.booking-action--booking {
 		border-color: #003b95;
-		background: #003b95;
-		color: #fff;
+		background: #edf4ff;
+		color: #003b95;
 	}
 
 	.booking-action--airbnb {
-		border-color: #222;
-		background: #fff;
+		border-color: #ff5a5f;
+		background: #fff6f6;
 		color: #222;
 	}
 
