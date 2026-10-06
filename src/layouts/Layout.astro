@@ -7,6 +7,7 @@ import LangToggle from '../components/LangToggle.svelte';
 import { localizeHref, delocalizePath } from '../lib/i18n';
 import { getMessages } from '../lib/messages';
 import WebMcp from '../components/WebMcp.astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 interface Props {
 	locale?: string;
@@ -53,6 +54,7 @@ const m = getMessages(locale);
 				<FabWhatsApp locale={locale} />
 				<Footer locale={locale} />
 			</main>
+			<SpeedInsights />
 		</div>
 	</body>
 </html>
