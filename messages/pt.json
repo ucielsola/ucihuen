@@ -6,6 +6,14 @@
 
 	"home_title": "Cabañas Ucihuen - Aluguel de Cabanas em Lago Puelo, Patagônia",
 	"home_meta_description": "Cabañas Ucihuen: aluguel de cabanas em Lago Puelo, Patagônia Argentina. A minutos do Parque Nacional, com WiFi, estacionamento e churrasqueira. Reserve agora.",
+	"booking_actions_label": "Opções de reserva",
+	"booking_booking": "Booking.com",
+	"booking_airbnb": "Airbnb",
+	"booking_whatsapp": "WhatsApp",
+	"booking_agent_availability": "Confirme a disponibilidade e os preços atuais na plataforma de reservas. Este site não consulta vagas nem conclui reservas.",
+	"webmcp_stay_tool_title": "Consultar informações das cabanas",
+	"webmcp_booking_tool_title": "Consultar opções de reserva",
+	"webmcp_excursions_tool_title": "Encontrar passeios próximos",
 	"gallery_meta_description": "Galeria de fotos das Cabañas Ucihuen em Lago Puelo. Conheça nossas cabanas para 4 e 7 hóspedes, os interiores e as áreas externas.",
 	"home_desc_1_before": "Localizadas a apenas duas quadras do centro da",
 	"home_desc_1_link": "Vila Turística Lago Puelo",
@@ -19,6 +27,8 @@
 	"home_location_title": "Nossa Localização",
 	"home_location_subtitle": "Lago Puelo, Chubut",
 	"home_reviews_title": "Avaliações",
+	"home_reviews_loading": "Carregando avaliações…",
+	"home_reviews_unavailable": "As avaliações estão temporariamente indisponíveis.",
 	"home_link_lago_puelo": "Site Oficial - Lago Puelo",
 	"home_link_parque_nacional": "Site Oficial - Parque Nacional Lago Puelo",
 

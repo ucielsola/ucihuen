@@ -6,6 +6,14 @@
 
 	"home_title": "Cabañas Ucihuen - Cabin Rental in Lago Puelo, Patagonia",
 	"home_meta_description": "Cabañas Ucihuen: cabin rental in Lago Puelo, Patagonia Argentina. Minutes from the National Park, with WiFi, parking, and barbecue grill. Book now.",
+	"booking_actions_label": "Booking options",
+	"booking_booking": "Booking.com",
+	"booking_airbnb": "Airbnb",
+	"booking_whatsapp": "WhatsApp",
+	"booking_agent_availability": "Confirm current availability and prices on the booking platform. This website does not check inventory or complete reservations.",
+	"webmcp_stay_tool_title": "Get cabin information",
+	"webmcp_booking_tool_title": "Get booking options",
+	"webmcp_excursions_tool_title": "Find nearby excursions",
 	"gallery_meta_description": "Photo gallery of Cabañas Ucihuen in Lago Puelo. Explore our cabins for 4 and 7 guests, interiors, and outdoor areas.",
 	"home_desc_1_before": "Located just two blocks from the center of the",
 	"home_desc_1_link": "Lago Puelo Tourist Village",
@@ -19,6 +27,8 @@
 	"home_location_title": "Our Location",
 	"home_location_subtitle": "Lago Puelo, Chubut",
 	"home_reviews_title": "Reviews",
+	"home_reviews_loading": "Loading reviews…",
+	"home_reviews_unavailable": "Reviews are temporarily unavailable.",
 	"home_link_lago_puelo": "Official Site - Lago Puelo",
 	"home_link_parque_nacional": "Official Site - Lago Puelo National Park",
 

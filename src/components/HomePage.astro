@@ -6,6 +6,7 @@ import InstagramEmbed from './InstagramEmbed.astro';
 import Faq from './Faq.astro';
 import Weather from './WeatherIsland.svelte';
 import SliderReviews from './SliderReviews.svelte';
+import { AIRBNB_URL, BOOKING_URL, WHATSAPP_URL } from '../lib/config';
 
 interface Props {
 	locale: string;
@@ -41,6 +42,61 @@ const { locale, m } = Astro.props;
 			</a>
 			{m.home_desc_2_after}
 		</p>
+		<div class="booking-actions" aria-label={m.booking_actions_label}>
+			<a
+				class="booking-action booking-action--whatsapp"
+				href={WHATSAPP_URL}
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<img class="booking-mark" src="/icons/whatsapp.webp" width="20" height="20" alt="" />
+				{m.booking_whatsapp}
+			</a>
+			<a
+				class="booking-action booking-action--booking"
+				href={BOOKING_URL}
+				target="_blank"
+				rel="noopener noreferrer nofollow"
+				aria-label={m.booking_booking}
+			>
+				<img
+					class="booking-mark booking-mark--symbol"
+					src="/icons/booking-symbol.webp"
+					width="19"
+					height="22"
+					alt=""
+				/>
+				<img
+					class="booking-mark booking-mark--wordmark"
+					src="/icons/booking-wordmark.webp"
+					width="66"
+					height="22"
+					alt=""
+				/>
+			</a>
+			<a
+				class="booking-action booking-action--airbnb"
+				href={AIRBNB_URL}
+				target="_blank"
+				rel="noopener noreferrer nofollow"
+				aria-label={m.booking_airbnb}
+			>
+				<img
+					class="booking-mark booking-mark--symbol"
+					src="/icons/airbnb-symbol.webp"
+					width="20"
+					height="22"
+					alt=""
+				/>
+				<img
+					class="booking-mark booking-mark--wordmark"
+					src="/icons/airbnb-wordmark.webp"
+					width="52"
+					height="22"
+					alt=""
+				/>
+			</a>
+		</div>
 	</section>
 
 	<section class="icon-grid">
@@ -55,7 +111,12 @@ const { locale, m } = Astro.props;
 			<Weather client:visible locale={locale} />
 			<InstagramEmbed />
 		</div>
-		<img src="/images/vertical_banner.webp" alt={m.home_vertical_banner_alt} />
+		<img
+			src="/images/vertical_banner.webp"
+			width="979"
+			height="1565"
+			alt={m.home_vertical_banner_alt}
+		/>
 	</section>
 </div>
 
@@ -84,7 +145,12 @@ const { locale, m } = Astro.props;
 		<h2 class="title">{m.home_reviews_title}</h2>
 	</div>
 
-	<SliderReviews client:visible locale={locale} />
+	<SliderReviews
+		client:visible
+		locale={locale}
+		loadingText={m.home_reviews_loading}
+		unavailableText={m.home_reviews_unavailable}
+	/>
 </section>
 
 <Faq {m} />
@@ -119,6 +185,60 @@ const { locale, m } = Astro.props;
 	a {
 		color: var(--primary-color);
 		text-decoration: none;
+	}
+
+	.booking-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.65rem;
+		margin-block-start: 1.25rem;
+	}
+
+	.booking-action {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+		min-height: 2.75rem;
+		padding: 0.65rem 1rem;
+		border: 1px solid transparent;
+		border-radius: var(--radius-sm);
+		font-weight: 600;
+		text-align: center;
+	}
+
+	.booking-action--whatsapp {
+		border-color: #075e54;
+		background: #075e54;
+		color: #fff;
+	}
+
+	.booking-action--booking {
+		border-color: #003b95;
+		background: #edf4ff;
+		color: #003b95;
+	}
+
+	.booking-action--airbnb {
+		border-color: #ff5a5f;
+		background: #fff6f6;
+		color: #222;
+	}
+
+	.booking-mark {
+		flex: 0 0 auto;
+		width: auto;
+		height: 1.25rem;
+		box-shadow: none;
+	}
+
+	.booking-action--booking .booking-mark,
+	.booking-action--airbnb .booking-mark {
+		gap: 0.55rem;
+	}
+
+	.booking-action--whatsapp .booking-mark {
+		filter: brightness(0) invert(1);
 	}
 
 	h3 {
@@ -177,6 +297,12 @@ const { locale, m } = Astro.props;
 		}
 
 		.vertical-banner img {
+			flex: 0 0 auto;
+			align-self: center;
+			width: 100%;
+			height: auto;
+			max-height: 32rem;
+			object-fit: contain;
 			border-radius: var(--radius-sm);
 			box-shadow: var(--shadow-sm);
 		}

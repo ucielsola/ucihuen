@@ -6,6 +6,8 @@ import FabWhatsApp from '../components/FabWhatsApp.astro';
 import LangToggle from '../components/LangToggle.svelte';
 import { localizeHref, delocalizePath } from '../lib/i18n';
 import { getMessages } from '../lib/messages';
+import WebMcp from '../components/WebMcp.astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 interface Props {
 	locale?: string;
@@ -22,23 +24,11 @@ const m = getMessages(locale);
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" href="/favicon.png" />
-		<meta
-			name="google-site-verification"
-			content="HtkNKZnoCCzIf01im9a6t7ywPOF-Ya1JJKtMQGI7EAM"
-		/>
+		<meta name="google-site-verification" content="HtkNKZnoCCzIf01im9a6t7ywPOF-Ya1JJKtMQGI7EAM" />
 		<link rel="preconnect" href="https://www.youtube-nocookie.com" />
 		<link rel="preconnect" href="https://i.ytimg.com" />
-		<link
-			rel="alternate"
-			type="text/markdown"
-			title="LLM-friendly content"
-			href="/llms.txt"
-		/>
-		<script
-			is:inline
-			async
-			src="https://www.googletagmanager.com/gtag/js?id=G-RRDPW3W5X2"
-		></script>
+		<link rel="alternate" type="text/markdown" title="LLM-friendly content" href="/llms.txt" />
+		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-RRDPW3W5X2"></script>
 		<script is:inline>
 			window.dataLayer = window.dataLayer || [];
 			function gtag() {
@@ -60,9 +50,11 @@ const m = getMessages(locale);
 			</div>
 			<main>
 				<slot />
+				<WebMcp locale={locale} />
 				<FabWhatsApp locale={locale} />
 				<Footer locale={locale} />
 			</main>
+			<SpeedInsights />
 		</div>
 	</body>
 </html>
