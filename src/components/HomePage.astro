@@ -59,7 +59,20 @@ const { locale, m } = Astro.props;
 				rel="noopener noreferrer nofollow"
 				aria-label={m.booking_booking}
 			>
-				<img class="booking-mark" src="/icons/booking.webp" width="89" height="22" alt="" />
+				<img
+					class="booking-mark booking-mark--symbol"
+					src="/icons/booking-symbol.webp"
+					width="19"
+					height="22"
+					alt=""
+				/>
+				<img
+					class="booking-mark booking-mark--wordmark"
+					src="/icons/booking-wordmark.webp"
+					width="66"
+					height="22"
+					alt=""
+				/>
 			</a>
 			<a
 				class="booking-action booking-action--airbnb"
@@ -68,7 +81,20 @@ const { locale, m } = Astro.props;
 				rel="noopener noreferrer nofollow"
 				aria-label={m.booking_airbnb}
 			>
-				<img class="booking-mark" src="/icons/airbnb.webp" width="75" height="22" alt="" />
+				<img
+					class="booking-mark booking-mark--symbol"
+					src="/icons/airbnb-symbol.webp"
+					width="20"
+					height="22"
+					alt=""
+				/>
+				<img
+					class="booking-mark booking-mark--wordmark"
+					src="/icons/airbnb-wordmark.webp"
+					width="52"
+					height="22"
+					alt=""
+				/>
 			</a>
 		</div>
 	</section>
@@ -204,6 +230,11 @@ const { locale, m } = Astro.props;
 		width: auto;
 		height: 1.25rem;
 		box-shadow: none;
+	}
+
+	.booking-action--booking .booking-mark,
+	.booking-action--airbnb .booking-mark {
+		gap: 0.55rem;
 	}
 
 	.booking-action--whatsapp .booking-mark {
