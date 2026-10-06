@@ -27,6 +27,8 @@
 	"home_location_title": "Our Location",
 	"home_location_subtitle": "Lago Puelo, Chubut",
 	"home_reviews_title": "Reviews",
+	"home_reviews_loading": "Loading reviews…",
+	"home_reviews_unavailable": "Reviews are temporarily unavailable.",
 	"home_link_lago_puelo": "Official Site - Lago Puelo",
 	"home_link_parque_nacional": "Official Site - Lago Puelo National Park",
 

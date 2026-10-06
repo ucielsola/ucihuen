@@ -27,6 +27,8 @@
 	"home_location_title": "¿Dónde nos ubicamos?",
 	"home_location_subtitle": "Lago Puelo, Chubut",
 	"home_reviews_title": "Reseñas",
+	"home_reviews_loading": "Cargando reseñas…",
+	"home_reviews_unavailable": "Las reseñas no están disponibles temporalmente.",
 	"home_link_lago_puelo": "Sitio Oficial - Lago Puelo",
 	"home_link_parque_nacional": "Sitio Oficial - Parque Nacional Lago Puelo",
 

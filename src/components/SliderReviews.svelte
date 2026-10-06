@@ -13,7 +13,11 @@
 		review_date: string;
 	}
 
-	let { locale = 'es' }: { locale?: string } = $props();
+	let {
+		locale = 'es',
+		loadingText = 'Loading reviews…',
+		unavailableText = 'Reviews are temporarily unavailable.'
+	}: { locale?: string; loadingText?: string; unavailableText?: string } = $props();
 
 	const BATCH = 8;
 	let reviews = $state<Review[]>([]);
@@ -57,34 +61,34 @@
 {#if reviews.length}
 	<div id="swiper-container">
 		<Swiper
-		modules={[Autoplay]}
-		autoplay={{
-			disableOnInteraction: false,
-			pauseOnMouseEnter: true
-		}}
-		loop={true}
-		speed={900}
-		centeredSlides={true}
-		slidesPerView={1.105}
-		spaceBetween={10}
-		breakpoints={{
-			1024: {
-				slidesPerView: 3.2,
-				spaceBetween: 20
-			},
-			1280: {
-				slidesPerView: 3.5
-			},
-			1440: {
-				slidesPerView: 3.9
-			},
-			1600: {
-				slidesPerView: 4.3
-			},
-			1700: {
-				slidesPerView: 4.95
-			}
-		}}
+			modules={[Autoplay]}
+			autoplay={{
+				disableOnInteraction: false,
+				pauseOnMouseEnter: true
+			}}
+			loop={true}
+			speed={900}
+			centeredSlides={true}
+			slidesPerView={1.105}
+			spaceBetween={10}
+			breakpoints={{
+				1024: {
+					slidesPerView: 3.2,
+					spaceBetween: 20
+				},
+				1280: {
+					slidesPerView: 3.5
+				},
+				1440: {
+					slidesPerView: 3.9
+				},
+				1600: {
+					slidesPerView: 4.3
+				},
+				1700: {
+					slidesPerView: 4.95
+				}
+			}}
 		>
 			{#each reviews as rev, i}
 				<SwiperSlide>
@@ -103,9 +107,9 @@
 		</Swiper>
 	</div>
 {:else if loading}
-	<p class="reviews-status" aria-live="polite">Loading reviews…</p>
+	<p class="reviews-status" aria-live="polite">{loadingText}</p>
 {:else if failed}
-	<p class="reviews-status" role="status">Reviews are temporarily unavailable.</p>
+	<p class="reviews-status" role="status">{unavailableText}</p>
 {/if}
 
 <style>
