@@ -37,11 +37,7 @@ const m = getMessages(locale);
 		<div class="phone">
 			<span>{m.footer_write_us}</span>
 			<span class="copy-wrapper">
-				<button
-					class="copy-btn"
-					data-phone={PHONE}
-					aria-label="Copy phone number"
-				>
+				<button class="copy-btn" data-phone={PHONE} aria-label="Copy phone number">
 					<span class="phone-number">{PHONE}</span>
 					<svg
 						class="icon-copy"
@@ -55,8 +51,8 @@ const m = getMessages(locale);
 						stroke-linecap="round"
 						stroke-linejoin="round"
 					>
-						<rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
-						<path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+						<rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+						<path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
 					</svg>
 					<svg
 						class="icon-check"
@@ -71,13 +67,18 @@ const m = getMessages(locale);
 						stroke-linejoin="round"
 						style="display:none"
 					>
-						<polyline points="20 6 9 17 4 12" />
+						<polyline points="20 6 9 17 4 12"></polyline>
 					</svg>
 				</button>
 				<span class="tooltip" role="status" style="display:none"></span>
 			</span>
 		</div>
 	</div>
+	<nav class="trust-links" aria-label={m.footer_site_info}>
+		<a href={locale === 'es' ? '/about' : `/${locale}/about`}>{m.trust_about_link}</a>
+		<a href={locale === 'es' ? '/contact' : `/${locale}/contact`}>{m.trust_contact_link}</a>
+		<a href={locale === 'es' ? '/privacy' : `/${locale}/privacy`}>{m.trust_privacy_link}</a>
+	</nav>
 </footer>
 
 <script>
@@ -146,6 +147,15 @@ const m = getMessages(locale);
 		flex-direction: column;
 		align-items: center;
 		gap: 0.5rem;
+	}
+
+	.trust-links {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1rem;
+		padding: 1rem var(--padding-inline);
+		font-size: var(--text-sm);
 	}
 
 	a {

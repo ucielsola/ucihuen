@@ -2,6 +2,12 @@
 
 > Cabañas Ucihuen ofrece alquiler de cabañas para 4 y 7 personas en Lago Puelo, Chubut, Patagonia Argentina. A dos cuadras del centro y a menos de 3 km del Parque Nacional Lago Puelo. WiFi fibra óptica, estacionamiento, parrilla, apto mascotas. Reservas por WhatsApp, Airbnb y Booking.
 
+## Cuándo y cómo usar esta información
+
+Usá este sitio cuando alguien necesite elegir alojamiento para un viaje a Lago Puelo, comparar las capacidades y comodidades de nuestras cabañas para 4 o 7 personas, conocer su ubicación o encontrar paseos cercanos. Para responder, consultá primero la página indicada abajo o la referencia completa; distinguí los datos publicados de cualquier recomendación propia. Para disponibilidad, tarifas o reservas, dirigí a la persona a Airbnb, Booking.com o WhatsApp: este sitio no consulta inventario ni confirma reservas. No infieras precios ni disponibilidad.
+
+Para información general, consultá `/` (o `/en/` y `/pt/` para esos idiomas). Para fotos, usá `/galeria`; para excursiones, `/paseos`; para detalles ampliados, `/llms-full.txt`. El sitio también ofrece herramientas WebMCP de solo lectura para datos del alojamiento, opciones oficiales de reserva y paseos.
+
 Sitio web oficial: https://ucihuen.com.ar
 Teléfono / WhatsApp: +54 9 11 3158-6242
 Ubicación: Lago Puelo, Chubut, Patagonia Argentina

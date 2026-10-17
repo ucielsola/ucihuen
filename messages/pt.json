@@ -3,7 +3,6 @@
 	"nav_gallery": "Galeria",
 	"header_tagline": "Emolduradas em uma verde paisagem cordilheirana, dentro de um vale cercado por montanhas arborizadas, rios, riachos e cachoeiras.",
 	"header_home_title": "Início",
-
 	"home_title": "Cabañas Ucihuen - Aluguel de Cabanas em Lago Puelo, Patagônia",
 	"home_meta_description": "Cabañas Ucihuen: aluguel de cabanas em Lago Puelo, Patagônia Argentina. A minutos do Parque Nacional, com WiFi, estacionamento e churrasqueira. Reserve agora.",
 	"booking_actions_label": "Opções de reserva",
@@ -31,7 +30,6 @@
 	"home_reviews_unavailable": "As avaliações estão temporariamente indisponíveis.",
 	"home_link_lago_puelo": "Site Oficial - Lago Puelo",
 	"home_link_parque_nacional": "Site Oficial - Parque Nacional Lago Puelo",
-
 	"amenity_pets": "Aceita Animais de Estimação",
 	"amenity_parking": "Estacionamento com Sombra",
 	"amenity_heating": "Aquecimento na Cabana",
@@ -50,7 +48,6 @@
 	"amenity_first_aid": "Kit de Primeiros Socorros",
 	"aria_show_less": "Mostrar menos comodidades",
 	"aria_show_more": "Mostrar mais comodidades",
-
 	"cabin_7_title": "Cabana para 7 pessoas",
 	"cabin_mobile_title_prefix": "Cabana para",
 	"cabin_7_mobile_guests": "7 pessoas",
@@ -66,7 +63,6 @@
 	"room_bathroom": "Banheiro",
 	"room_kitchen_dining": "Cozinha-Sala de Jantar",
 	"room_living_futons": "Sala de Estar com Futons",
-
 	"gallery_title": "Galeria - Cabañas Ucihuen",
 	"gallery_cab1_heading": "Cabana 7 Hóspedes",
 	"gallery_cab1_subtitle": "2 Quartos | Sala de Estar-Jantar | Cozinha | Banheiro",
@@ -79,17 +75,14 @@
 	"alt_exterior_photo": "Exterior das Cabañas Ucihuen - foto {n}",
 	"alt_interior_cab1_photo": "Interior da cabana para 7 hóspedes - foto {n}",
 	"alt_interior_cab2_photo": "Interior da cabana para 4 hóspedes - foto {n}",
-
 	"footer_find_us": "Também nos encontre em",
 	"footer_write_us": "ou entre em contato pelo",
 	"footer_copied": "Copiado!",
 	"footer_development": "Desenvolvimento",
 	"footer_design": "Design",
-
 	"aria_close": "Fechar",
 	"aria_close_image": "Fechar imagem",
 	"fab_whatsapp_title": "Fale conosco pelo WhatsApp",
-
 	"weather_title": "Clima em Lago Puelo",
 	"weather_feels_like": "Sensação:",
 	"weather_feels_like_text": "Sensação térmica de",
@@ -110,13 +103,11 @@
 	"weather_view_forecast": "Ver previsão de 7 dias",
 	"weather_forecast_title": "Previsão de 7 dias",
 	"weather_close": "Fechar",
-
 	"nav_excursions": "Passeios",
 	"excursions_title": "Passeios Recomendados - Cabañas Ucihuen",
 	"excursions_meta_description": "Descubra os melhores passeios e excursões perto das Cabañas Ucihuen em Lago Puelo: Parque Nacional, praias, trilhas, feiras e muito mais.",
 	"excursions_heading": "Passeios Recomendados",
 	"excursions_intro": "Descubra a beleza natural que rodeia Ucihuen e o encanto de Lago Puelo. Este canto privilegiado da Patagônia oferece uma grande variedade de passeios e atividades ao ar livre, ideais para conectar-se com a natureza e desfrutar de paisagens inesquecíveis.",
-
 	"excursion_1_title": "Parque Nacional Lago Puelo",
 	"excursion_1_desc": "Com uma variedade notável de flora, incluindo espécies únicas como avelã, ulmo, tique e lingue, o parque possui florestas puras de pitra, os maiores ciprestes da Argentina e é um dos três parques nacionais que protegem o alerce. Seja em excursão de barco ou nas trilhas de caminhada e trekking, você pode descobrir lugares de enorme beleza, como a nascente do rio Puelo, a cachoeira do rio León e o cânion do rio Melo. De fácil acesso, a apenas 4 quilômetros de Lago Puelo, o Parque possui área recreativa com camping rústico e churrasqueiras.",
 	"excursion_2_title": "Passarela Rio Azul",
@@ -137,12 +128,10 @@
 	"excursion_9_desc": "Trilha de montanha de dificuldade média que sobe 130 metros acima do Lago Puelo até um mirante com vistas panorâmicas do lago e das montanhas ao redor. O percurso é de 900 metros com tempo estimado de 2 horas ida e volta. Recomenda-se cautela nas encostas e degraus de rocha, e levar água e calçado adequado.",
 	"excursion_10_title": "Trilha dos Antigos Povoadores",
 	"excursion_10_desc": "Declarada Patrimônio Histórico, Cultural e Natural, esta trilha de quase 1 km percorre as vielas El Cóndor e Cauken. É uma viagem no tempo pelo território utilizado pelos pioneiros de Lago Puelo, ideal para descobrir a história e a paisagem cultural da região.",
-
 	"excursion_directions": "Como chegar",
 	"excursion_website": "Site",
 	"excursion_read_more": "Ler mais",
 	"excursion_read_less": "Ler menos",
-
 	"excursion_tag_nature": "Natureza",
 	"excursion_tag_trails": "Trilhas",
 	"excursion_tag_beach": "Praia",
@@ -155,9 +144,7 @@
 	"excursion_tag_history": "História",
 	"excursion_tag_gastronomy": "Gastronomia",
 	"excursion_tag_family": "Família",
-
 	"home_vertical_banner_alt": "Vista do parque das Cabañas Ucihuen com árvores frutíferas e montanhas ao fundo",
-
 	"review_posted_on_google": "Publicado no Google",
 	"faq_title": "Perguntas frequentes",
 	"faq_location_question": "Onde ficam as Cabañas Ucihuen?",
@@ -173,5 +160,18 @@
 	"faq_breakfast_question": "O café da manhã está incluído?",
 	"faq_breakfast_answer": "Recebemos os hóspedes com um café da manhã de boas-vindas com café, chá, mate cocido, açúcar e doce caseiro.",
 	"faq_parking_question": "Há estacionamento?",
-	"faq_parking_answer": "Sim, as cabanas têm estacionamento coberto dentro da propriedade."
+	"faq_parking_answer": "Sim, as cabanas têm estacionamento coberto dentro da propriedade.",
+	"trust_about_title": "Sobre as Cabañas Ucihuen",
+	"trust_about_meta": "Sobre nossas cabanas em Lago Puelo, Patagônia Argentina",
+	"trust_about_body": "Cabañas Ucihuen é uma hospedagem turística localizada na Los Alerces 880, na Villa Turística Lago Puelo, província de Chubut, Patagônia Argentina. A propriedade oferece duas cabanas equipadas: uma para até sete pessoas e outra para até quatro. Esta página descreve a hospedagem e os serviços com base nas informações publicadas pelos responsáveis. O site apresenta detalhes das cabanas, comodidades, localização, fotos e atividades próximas para que os visitantes conheçam o lugar antes de entrar em contato. Os visitantes também podem consultar uma galeria de fotos e um guia de passeios e atrações próximas. Entre as comodidades informadas estão WiFi por fibra óptica, estacionamento com sombra, churrasqueira individual, roupa de cama e toalhas, água quente e calefação. Animais de estimação são aceitos. Preços e datas disponíveis devem ser confirmados pelos canais de reserva indicados no site.",
+	"trust_contact_title": "Contato",
+	"trust_contact_meta": "Como entrar em contato com Cabañas Ucihuen",
+	"trust_contact_body": "Para tirar dúvidas sobre as cabanas, as comodidades ou organizar uma estadia, entre em contato pelo WhatsApp no número +54 9 11 3158-6242. Você também pode usar o link do WhatsApp publicado neste site. A propriedade fica na Los Alerces 880, Villa Turística Lago Puelo, Chubut, Argentina. A disponibilidade e os preços mudam; consulte os canais oficiais de reserva ou fale diretamente com os responsáveis para obter informações atualizadas. Para consultar preços e datas atuais, verifique os anúncios oficiais no Airbnb e Booking.com ou envie uma mensagem pelo WhatsApp. Este site não apresenta calendário próprio de disponibilidade nem confirma uma reserva; é necessário verificar essas informações com a plataforma ou diretamente com os responsáveis. Você também pode ver a galeria de fotos e os passeios próximos antes de planejar a viagem.",
+	"trust_privacy_title": "Privacidade",
+	"trust_privacy_meta": "Informações de privacidade e serviços de terceiros",
+	"trust_privacy_body": "Este site apresenta informações sobre Cabañas Ucihuen e seus serviços. Não possui formulário de contato, cadastro de usuários nem sistema próprio para processar reservas. O site utiliza Google Analytics e Vercel Analytics para medição de visitas e informações de desempenho. Há links para WhatsApp, Airbnb e Booking.com; ao acessar esses serviços, a navegação e os dados fornecidos ficam sujeitos às políticas e condições de cada fornecedor. Este site não coleta informações de disponibilidade nem dados de reservas. O site também carrega Google Analytics e Vercel Analytics para medição de uso e informações de desempenho. Não há formulários neste site que solicitem dados pessoais dos visitantes. Se você escolher falar pelo WhatsApp ou reservar pelo Airbnb ou Booking.com, compartilhará informações diretamente com esses fornecedores, que aplicam suas próprias políticas de privacidade e condições. Entre em contato com os responsáveis pelo telefone publicado neste site.",
+	"footer_site_info": "Informações do site",
+	"trust_about_link": "Sobre nós",
+	"trust_contact_link": "Contato",
+	"trust_privacy_link": "Privacidade"
 }

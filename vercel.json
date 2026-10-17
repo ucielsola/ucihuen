@@ -1,4 +1,48 @@
 {
+	"$schema": "https://openapi.vercel.sh/vercel.json",
 	"trailingSlash": false,
-	"cleanUrls": true
+	"cleanUrls": true,
+	"routes": [
+		{
+			"src": "^/$",
+			"has": [
+				{
+					"type": "header",
+					"key": "Accept",
+					"value": { "pre": "text/markdown" }
+				}
+			],
+			"dest": "/agent-home.md",
+			"headers": {
+				"Content-Type": "text/markdown; charset=utf-8",
+				"Vary": "Accept"
+			}
+		},
+		{
+			"src": "^/$",
+			"dest": "/index.html",
+			"headers": { "Vary": "Accept" }
+		},
+		{ "handle": "filesystem" },
+		{ "src": "^/_server-islands/([^/]+?)/?$", "dest": "_render" },
+		{ "src": "^/_image/?$", "dest": "_render" },
+		{ "src": "^/api/reviews/?$", "dest": "_render" },
+		{
+			"src": "^/.*$",
+			"has": [
+				{
+					"type": "header",
+					"key": "Accept",
+					"value": { "pre": "text/markdown" }
+				}
+			],
+			"dest": "/404.md",
+			"status": 404,
+			"headers": {
+				"Content-Type": "text/markdown; charset=utf-8",
+				"Vary": "Accept"
+			}
+		},
+		{ "src": "^/.*$", "dest": "/404.html", "status": 404 }
+	]
 }

@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SEO from '../components/SEO.astro';
+import TrustPage from '../components/TrustPage.astro';
+import { getMessages } from '../lib/messages';
+
+export function getStaticPaths() {
+	return ['about', 'contact', 'privacy'].map((slug) => ({ params: { slug } }));
+}
+
+const slug = Astro.params.slug as 'about' | 'contact' | 'privacy';
+const locale = 'es';
+const m = getMessages(locale);
+const title = m[`trust_${slug}_title`];
+const description = m[`trust_${slug}_meta`];
+const content = m[`trust_${slug}_body`];
+---
+
+<Layout locale={locale}>
+	<SEO slot="head" title={title} description={description} locale={locale} />
+	<TrustPage locale={locale} title={title} content={content} />
+</Layout>

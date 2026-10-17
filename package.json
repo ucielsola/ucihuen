@@ -6,6 +6,7 @@
 		"dev": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
+		"test:agent-readiness": "node --test tests/agent-readiness.test.js",
 		"lint": "prettier --ignore-path .gitignore --check ."
 	},
 	"dependencies": {

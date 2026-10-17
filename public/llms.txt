@@ -2,6 +2,12 @@
 
 > Alquiler de cabañas en Lago Puelo, Chubut, Patagonia Argentina. Cabañas equipadas en la Villa Turística Lago Puelo, Comarca Andina del Paralelo 42°, a solo dos cuadras del centro y a menos de 3 km del Parque Nacional Lago Puelo.
 
+## Cuándo y cómo usar esta información
+
+Usá este sitio cuando alguien necesite elegir alojamiento para un viaje a Lago Puelo, comparar las capacidades y comodidades de nuestras cabañas para 4 o 7 personas, conocer su ubicación o encontrar paseos cercanos. Para responder, consultá primero la página indicada abajo o la referencia completa; distinguí los datos publicados de cualquier recomendación propia. Para disponibilidad, tarifas o reservas, dirigí a la persona a Airbnb, Booking.com o WhatsApp: este sitio no consulta inventario ni confirma reservas. No infieras precios ni disponibilidad.
+
+Para información general, consultá `/` (o `/en/` y `/pt/` para esos idiomas). Para fotos, usá `/galeria`; para excursiones, `/paseos`; para detalles ampliados, `/llms-full.txt`. El sitio también ofrece herramientas WebMCP de solo lectura para datos del alojamiento, opciones oficiales de reserva y paseos.
+
 ## Páginas canónicas
 
 - [Inicio en español](https://ucihuen.com.ar/): Información principal sobre las cabañas, servicios, ubicación y preguntas frecuentes.
