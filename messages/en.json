@@ -3,7 +3,6 @@
 	"nav_gallery": "Gallery",
 	"header_tagline": "Nestled in a green valley surrounded by forested mountains, rivers, streams, and waterfalls.",
 	"header_home_title": "Home",
-
 	"home_title": "Cabañas Ucihuen - Cabin Rental in Lago Puelo, Patagonia",
 	"home_meta_description": "Cabañas Ucihuen: cabin rental in Lago Puelo, Patagonia Argentina. Minutes from the National Park, with WiFi, parking, and barbecue grill. Book now.",
 	"booking_actions_label": "Booking options",
@@ -31,7 +30,6 @@
 	"home_reviews_unavailable": "Reviews are temporarily unavailable.",
 	"home_link_lago_puelo": "Official Site - Lago Puelo",
 	"home_link_parque_nacional": "Official Site - Lago Puelo National Park",
-
 	"amenity_pets": "Pet Friendly",
 	"amenity_parking": "Shaded Parking",
 	"amenity_heating": "Cabin Heating",
@@ -50,7 +48,6 @@
 	"amenity_first_aid": "First Aid Kit",
 	"aria_show_less": "Show fewer amenities",
 	"aria_show_more": "Show more amenities",
-
 	"cabin_7_title": "Cabin for 7 guests",
 	"cabin_mobile_title_prefix": "Cabin for",
 	"cabin_7_mobile_guests": "7 guests",
@@ -66,7 +63,6 @@
 	"room_bathroom": "Bathroom",
 	"room_kitchen_dining": "Kitchen-Dining Room",
 	"room_living_futons": "Living Room with Futons",
-
 	"gallery_title": "Gallery - Cabañas Ucihuen",
 	"gallery_cab1_heading": "Cabin for 7 Guests",
 	"gallery_cab1_subtitle": "2 BEDROOMS | LIVING-DINING ROOM | KITCHEN | BATHROOM",
@@ -79,17 +75,14 @@
 	"alt_exterior_photo": "Exterior view of Cabañas Ucihuen, photo {n}",
 	"alt_interior_cab1_photo": "Interior of cabin for 7 guests, photo {n}",
 	"alt_interior_cab2_photo": "Interior of cabin for 4 guests, photo {n}",
-
 	"footer_find_us": "Also find us on",
 	"footer_write_us": "or contact us at",
 	"footer_copied": "Copied!",
 	"footer_development": "Development",
 	"footer_design": "Design",
-
 	"aria_close": "Close",
 	"aria_close_image": "Close image",
 	"fab_whatsapp_title": "Contact us on WhatsApp",
-
 	"weather_title": "Weather in Lago Puelo",
 	"weather_feels_like": "Feels like:",
 	"weather_feels_like_text": "Feels like",
@@ -110,13 +103,11 @@
 	"weather_view_forecast": "View 7-day forecast",
 	"weather_forecast_title": "7-Day Forecast",
 	"weather_close": "Close",
-
 	"nav_excursions": "Walks",
 	"excursions_title": "Recommended Walks - Cabañas Ucihuen",
 	"excursions_meta_description": "Discover the best walks and excursions near Cabañas Ucihuen in Lago Puelo: National Park, beaches, trails, markets and more.",
 	"excursions_heading": "Recommended Walks",
 	"excursions_intro": "Discover the natural beauty surrounding Ucihuen and the charm of Lago Puelo. This privileged corner of Patagonia offers a wide variety of walks and outdoor activities, perfect for connecting with nature and enjoying unforgettable landscapes.",
-
 	"excursion_1_title": "Lago Puelo National Park",
 	"excursion_1_desc": "With a remarkable variety of flora, including unique species like hazelnut, ulmo, tique and lingue trees, the park features pure pitra forests, Argentina's largest cypress groves, and is one of only three national parks that protect the alerce tree. Whether by boat excursion or on foot along hiking and trekking trails, you can discover places of enormous beauty such as the source of the Puelo River, the León River waterfall, and the Melo River canyon. Easily accessible, just 4 kilometers from Lago Puelo, the Park has a recreational area with rustic camping and fire pits.",
 	"excursion_2_title": "Río Azul Footbridge",
@@ -137,12 +128,10 @@
 	"excursion_9_desc": "A medium-difficulty mountain trail that climbs 130 meters above Lago Puelo to a viewpoint with panoramic views of the lake and surrounding mountains. The trail is 900 meters long with an estimated round-trip time of 2 hours. Caution is recommended on slopes and rock steps, and bring water and proper footwear.",
 	"excursion_10_title": "Ancient Settlers Trail",
 	"excursion_10_desc": "Declared Historical, Cultural and Natural Heritage, this nearly 1 km trail runs through the El Cóndor and Cauken lanes. It's a journey through time across the land used by the pioneers of Lago Puelo, ideal for discovering the history and cultural landscape of the region.",
-
 	"excursion_directions": "Get directions",
 	"excursion_website": "Website",
 	"excursion_read_more": "Read more",
 	"excursion_read_less": "Read less",
-
 	"excursion_tag_nature": "Nature",
 	"excursion_tag_trails": "Trails",
 	"excursion_tag_beach": "Beach",
@@ -155,9 +144,7 @@
 	"excursion_tag_history": "History",
 	"excursion_tag_gastronomy": "Gastronomy",
 	"excursion_tag_family": "Family",
-
 	"home_vertical_banner_alt": "View of Cabañas Ucihuen park with fruit trees and mountains in the background",
-
 	"review_posted_on_google": "Posted on Google",
 	"faq_title": "Frequently asked questions",
 	"faq_location_question": "Where are Cabañas Ucihuen located?",
@@ -173,5 +160,18 @@
 	"faq_breakfast_question": "Is breakfast included?",
 	"faq_breakfast_answer": "We welcome guests with a breakfast including coffee, tea, mate cocido, sugar, and homemade jam.",
 	"faq_parking_question": "Is parking available?",
-	"faq_parking_answer": "Yes, the cabins have shaded parking inside the property."
+	"faq_parking_answer": "Yes, the cabins have shaded parking inside the property.",
+	"trust_about_title": "About Cabañas Ucihuen",
+	"trust_about_meta": "About our cabins in Lago Puelo, Patagonia, Argentina",
+	"trust_about_body": "Cabañas Ucihuen is tourist accommodation at Los Alerces 880 in Villa Turística Lago Puelo, Chubut, Patagonia, Argentina. The property offers two equipped cabins: one for up to seven guests and another for up to four. This page describes the accommodation and services based on information published by its operators. The website provides details about the cabins, amenities, location, photographs, and nearby activities so visitors can learn about the property before contacting the hosts. Visitors can also browse a photo gallery and a guide to nearby walks and attractions. Published amenities include fibre-optic WiFi, shaded parking, an individual barbecue grill, bed linen and towels, hot water, and heating. Pets are welcome. Rates and available dates are not fixed on this page and should be confirmed through the booking channels listed on the website.",
+	"trust_contact_title": "Contact",
+	"trust_contact_meta": "How to contact Cabañas Ucihuen",
+	"trust_contact_body": "For questions about the cabins, their amenities, or arranging a stay, contact Cabañas Ucihuen on WhatsApp at +54 9 11 3158-6242. You can also use the WhatsApp link published on this website. The property is located at Los Alerces 880, Villa Turística Lago Puelo, Chubut, Argentina. Availability and rates change, so please check the official booking channels or contact the hosts directly for current information. For current prices and dates, check the official Airbnb and Booking.com listings or send a WhatsApp message. This website does not show its own availability calendar or confirm a reservation; the booking platform or a direct reply from the hosts is needed to verify those details. You can also browse the photo gallery and nearby excursions before planning your visit.",
+	"trust_privacy_title": "Privacy",
+	"trust_privacy_meta": "Privacy information and third-party services",
+	"trust_privacy_body": "This website provides information about Cabañas Ucihuen and its services. It does not include a contact form, user registration, or an in-house booking system. The website uses Google Analytics and Vercel Analytics for website measurement and performance insights. It links to WhatsApp, Airbnb, and Booking.com; when you open those services, your browsing and any information you provide are governed by the respective provider’s own policies and terms. No availability or booking details are collected through this website. The website also loads Google Analytics and Vercel Analytics for usage measurement and performance insights. There are no forms on this website that ask visitors to submit personal details. If you choose to contact the hosts on WhatsApp or book through Airbnb or Booking.com, you share information directly with those providers, which apply their own privacy policies and terms. Contact the hosts using the phone number published on this site.",
+	"footer_site_info": "Site information",
+	"trust_about_link": "About",
+	"trust_contact_link": "Contact",
+	"trust_privacy_link": "Privacy"
 }

@@ -1,0 +1,55 @@
+---
+import { localizeHref } from '../lib/i18n';
+
+interface Props {
+	locale: string;
+	title: string;
+	content: string;
+}
+
+const { locale, title, content } = Astro.props;
+const paragraphs = content.split('\n\n');
+---
+
+<article class="trust-page">
+	<h1>{title}</h1>
+	{paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+	<nav
+		aria-label={locale === 'es'
+			? 'Información del sitio'
+			: locale === 'pt'
+				? 'Informações do site'
+				: 'Site information'}
+	>
+		<a href={localizeHref('/about', locale)}
+			>{locale === 'es' ? 'Quiénes somos' : locale === 'pt' ? 'Sobre nós' : 'About'}</a
+		>
+		<a href={localizeHref('/contact', locale)}
+			>{locale === 'es' ? 'Contacto' : locale === 'pt' ? 'Contato' : 'Contact'}</a
+		>
+		<a href={localizeHref('/privacy', locale)}
+			>{locale === 'es' ? 'Privacidad' : locale === 'pt' ? 'Privacidade' : 'Privacy'}</a
+		>
+	</nav>
+</article>
+
+<style>
+	.trust-page {
+		max-width: 52rem;
+		margin: 0 auto;
+		padding: 1rem var(--padding-inline) 3rem;
+	}
+	h1 {
+		margin-block: 1rem;
+	}
+	p {
+		line-height: 1.7;
+		margin-block: 0 1rem;
+	}
+	nav {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		margin-block-start: 2rem;
+	}
+</style>

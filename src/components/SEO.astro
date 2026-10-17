@@ -45,7 +45,8 @@ const jsonLdData = JSON.stringify({
 		longitude: -71.6080007
 	},
 	image: OG_IMAGE,
-	hasMap: 'https://www.google.com/maps/search/?api=1&query=Caba%C3%B1as%20Ucihuen%2C%20Lago%20Puelo',
+	hasMap:
+		'https://www.google.com/maps/search/?api=1&query=Caba%C3%B1as%20Ucihuen%2C%20Lago%20Puelo',
 	petsAllowed: true,
 	amenityFeature: [
 		{ '@type': 'LocationFeatureSpecification', name: 'WiFi', value: true },
@@ -62,26 +63,44 @@ const webSiteJsonLdData = JSON.stringify({
 	url: SITE_URL,
 	inLanguage: locale
 });
+
+const organizationJsonLdData = JSON.stringify({
+	'@context': 'https://schema.org',
+	'@type': 'Organization',
+	name: 'Cabañas Ucihuen',
+	url: SITE_URL,
+	telephone: PHONE,
+	contactPoint: {
+		'@type': 'ContactPoint',
+		telephone: PHONE,
+		contactType: 'reservations and customer service',
+		availableLanguage: ['Spanish', 'English', 'Portuguese']
+	},
+	address: {
+		'@type': 'PostalAddress',
+		streetAddress: 'Los Alerces 880',
+		addressLocality: 'Lago Puelo',
+		addressRegion: 'Chubut',
+		postalCode: '9211',
+		addressCountry: 'AR'
+	}
+});
 ---
 
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalUrl} />
-{allLocales.map((loc) => (
-	<link
-		rel="alternate"
-		hreflang={loc}
-		href={`${SITE_URL}${localizeHref(currentPath, loc)}`}
-	/>
-))}
+{
+	allLocales.map((loc) => (
+		<link rel="alternate" hreflang={loc} href={`${SITE_URL}${localizeHref(currentPath, loc)}`} />
+	))
+}
 <link rel="alternate" hreflang="x-default" href={`${SITE_URL}${currentPath}`} />
 <meta property="og:site_name" content="Cabañas Ucihuen" />
 <meta property="og:type" content="business.business" />
 <meta property="og:image" content={OG_IMAGE} />
 <meta property="og:locale" content={ogLocale} />
-{altLocales.map((alt) => (
-	<meta property="og:locale:alternate" content={alt} />
-))}
+{altLocales.map((alt) => <meta property="og:locale:alternate" content={alt} />)}
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonicalUrl} />
@@ -91,4 +110,5 @@ const webSiteJsonLdData = JSON.stringify({
 <meta name="twitter:description" content={description} />
 <meta name="twitter:url" content={canonicalUrl} />
 <script type="application/ld+json" set:html={jsonLdData} />
+{isHomePage && <script type="application/ld+json" set:html={organizationJsonLdData} />}
 {isHomePage && <script type="application/ld+json" set:html={webSiteJsonLdData} />}

@@ -3,7 +3,6 @@
 	"nav_gallery": "Galería",
 	"header_tagline": "Enmarcadas en un verde paisaje cordillerano, dentro de un valle rodeado de montañas boscosas, rios, arroyos y cascadas.",
 	"header_home_title": "Inicio",
-
 	"home_title": "Cabañas Ucihuen - Alquiler de Cabañas en Lago Puelo",
 	"home_meta_description": "Cabañas Ucihuen: alquiler de cabañas en Lago Puelo, Patagonia Argentina. A minutos del Parque Nacional, con WiFi, estacionamiento y parrilla. Reservá ahora.",
 	"booking_actions_label": "Opciones para reservar",
@@ -31,7 +30,6 @@
 	"home_reviews_unavailable": "Las reseñas no están disponibles temporalmente.",
 	"home_link_lago_puelo": "Sitio Oficial - Lago Puelo",
 	"home_link_parque_nacional": "Sitio Oficial - Parque Nacional Lago Puelo",
-
 	"amenity_pets": "Apto para Mascotas",
 	"amenity_parking": "Estacionamiento con Sombra",
 	"amenity_heating": "Calefacción en la Cabaña",
@@ -50,7 +48,6 @@
 	"amenity_first_aid": "Botiquín de Primeros Auxilios",
 	"aria_show_less": "Mostrar menos comodidades",
 	"aria_show_more": "Mostrar más comodidades",
-
 	"cabin_7_title": "Cabaña para 7 personas",
 	"cabin_mobile_title_prefix": "Cabaña para",
 	"cabin_7_mobile_guests": "7 personas",
@@ -66,7 +63,6 @@
 	"room_bathroom": "Baño",
 	"room_kitchen_dining": "Cocina-Comedor",
 	"room_living_futons": "Living con futones",
-
 	"gallery_title": "Galería - Cabañas Ucihuen",
 	"gallery_cab1_heading": "Cabaña 7 Pasajeros",
 	"gallery_cab1_subtitle": "2 Habitaciones | Living-Comedor | Cocina | Baño",
@@ -79,17 +75,14 @@
 	"alt_exterior_photo": "Exterior de Cabañas Ucihuen - foto {n}",
 	"alt_interior_cab1_photo": "Interior Cabaña 7 pasajeros - foto {n}",
 	"alt_interior_cab2_photo": "Interior Cabaña 4 pasajeros - foto {n}",
-
 	"footer_find_us": "También podés encontrarnos en",
 	"footer_write_us": "o contactanos al",
 	"footer_copied": "Copiado!",
 	"footer_development": "Desarrollo",
 	"footer_design": "Diseño",
-
 	"aria_close": "Cerrar",
 	"aria_close_image": "Cerrar imagen",
 	"fab_whatsapp_title": "Contactanos por WhatsApp",
-
 	"weather_title": "Clima en Lago Puelo",
 	"weather_feels_like": "Sensación:",
 	"weather_feels_like_text": "Sensación térmica de",
@@ -110,13 +103,11 @@
 	"weather_view_forecast": "Ver pronóstico 7 días",
 	"weather_forecast_title": "Pronóstico 7 días",
 	"weather_close": "Cerrar",
-
 	"nav_excursions": "Paseos",
 	"excursions_title": "Paseos Recomendados - Cabañas Ucihuen",
 	"excursions_meta_description": "Descubrí los mejores paseos y excursiones cerca de Cabañas Ucihuen en Lago Puelo: Parque Nacional, balnearios, senderos, ferias y más.",
 	"excursions_heading": "Paseos Recomendados",
 	"excursions_intro": "Descubrí la belleza natural que rodea a Ucihuen y el encanto de Lago Puelo. Esta zona privilegiada de la Patagonia ofrece una gran variedad de paseos y actividades al aire libre, ideales para conectar con la naturaleza y disfrutar de paisajes inolvidables.",
-
 	"excursion_1_title": "Parque Nacional Lago Puelo",
 	"excursion_1_desc": "Con una variedad de flora muy particular, que ofrece especies únicas como el avellano, el ulmo, el tique y el lingue, el parque posee bosques puros de pitra, los cipresales más extensos de la Argentina y es uno de los tres parques nacionales que protegen al alerce. Ya sea en una excursión en barco como en las opciones de caminatas y trekking, podés descubrir lugares de enorme belleza, como el nacimiento del río Puelo, los arroyos Las Lágrimas y Los Hitos, la cascada del río León y el cajón del río Melo. De muy fácil acceso y a sólo 4 kilómetros de Lago Puelo, el Parque tiene un área recreativa con camping agreste y fogones.",
 	"excursion_2_title": "Pasarela Río Azul",
@@ -137,12 +128,10 @@
 	"excursion_9_desc": "Sendero de montaña de dificultad media que asciende 130 metros sobre el lago Puelo hasta un mirador con vistas panorámicas del lago y las montañas que lo rodean. El recorrido es de 900 metros con un tiempo aproximado de 2 horas ida y vuelta. Se recomienda transitar con cuidado por las pendientes y escalones en la roca, y llevar agua y calzado adecuado.",
 	"excursion_10_title": "Sendero Antiguos Pobladores",
 	"excursion_10_desc": "Declarado Patrimonio Histórico, Cultural y Natural, este sendero de casi 1 km recorre los callejones El Cóndor y Cauken. Es un paseo a través del tiempo por el territorio que utilizaron los pioneros de Lago Puelo, ideal para descubrir la historia y el paisaje cultural de la región.",
-
 	"excursion_directions": "Cómo llegar",
 	"excursion_website": "Sitio web",
 	"excursion_read_more": "Leer más",
 	"excursion_read_less": "Leer menos",
-
 	"excursion_tag_nature": "Naturaleza",
 	"excursion_tag_trails": "Senderos",
 	"excursion_tag_beach": "Balneario",
@@ -155,9 +144,7 @@
 	"excursion_tag_history": "Historia",
 	"excursion_tag_gastronomy": "Gastronomía",
 	"excursion_tag_family": "Familiar",
-
 	"home_vertical_banner_alt": "Vista del parque de Cabañas Ucihuen con árboles frutales y montañas al fondo",
-
 	"review_posted_on_google": "Publicado en Google",
 	"faq_title": "Preguntas frecuentes",
 	"faq_location_question": "¿Dónde están ubicadas las Cabañas Ucihuen?",
@@ -173,5 +160,18 @@
 	"faq_breakfast_question": "¿Incluyen desayuno?",
 	"faq_breakfast_answer": "Recibimos a nuestros huéspedes con un desayuno de bienvenida que incluye café, té, mate cocido, azúcar y dulce casero.",
 	"faq_parking_question": "¿Hay estacionamiento?",
-	"faq_parking_answer": "Sí, las cabañas cuentan con estacionamiento con sombra dentro del predio."
+	"faq_parking_answer": "Sí, las cabañas cuentan con estacionamiento con sombra dentro del predio.",
+	"trust_about_title": "Quiénes somos",
+	"trust_about_meta": "Conocé Cabañas Ucihuen en Lago Puelo",
+	"trust_about_body": "Cabañas Ucihuen es un alojamiento turístico ubicado en Los Alerces 880, en la Villa Turística Lago Puelo, provincia del Chubut, Patagonia Argentina. El emprendimiento ofrece dos cabañas equipadas, una con capacidad para hasta siete personas y otra para hasta cuatro. La información de esta página describe el alojamiento y sus servicios de acuerdo con lo publicado por sus responsables. En este sitio también podés recorrer la galería de imágenes y consultar una selección de paseos de la zona. Entre las comodidades informadas se encuentran WiFi por fibra óptica, estacionamiento con sombra, parrilla individual, ropa de cama y toallas, agua caliente y calefacción. Las mascotas son bienvenidas. Para tarifas y fechas disponibles, consultá los canales de reserva, ya que esos datos cambian.",
+	"trust_contact_title": "Contacto",
+	"trust_contact_meta": "Cómo consultar y comunicarse con Cabañas Ucihuen",
+	"trust_contact_body": "Para consultar por las cabañas, su equipamiento o coordinar una estadía, podés comunicarte directamente por WhatsApp al +54 9 11 3158-6242. También podés usar el enlace de WhatsApp publicado en este sitio. La dirección del alojamiento es Los Alerces 880, Villa Turística Lago Puelo, Chubut, Argentina. Las consultas y reservas se responden por los canales oficiales indicados aquí. Para conocer precios y fechas disponibles, consultá los perfiles oficiales de Airbnb y Booking.com, o escribí por WhatsApp. El sitio no muestra un calendario propio ni confirma disponibilidad; la consulta directa o la plataforma elegida es la fuente para verificar esos datos. También podés revisar la galería y la página de paseos antes de planificar tu visita.",
+	"trust_privacy_title": "Privacidad",
+	"trust_privacy_meta": "Información sobre privacidad y servicios de terceros",
+	"trust_privacy_body": "Este sitio presenta información sobre Cabañas Ucihuen y sus servicios. No contiene formularios de contacto, registro de usuarios ni un sistema propio para procesar reservas. Para consultas, el sitio enlaza a WhatsApp; también incluye enlaces a Airbnb y Booking.com. Al abrir esos servicios, la navegación y los datos que compartas quedan sujetos a las políticas y condiciones de cada proveedor externo. El sitio carga Google Analytics y Vercel Analytics para medición de uso y rendimiento. No hay formularios en los que este sitio solicite datos personales. Si elegís comunicarte por WhatsApp o reservar mediante Airbnb o Booking.com, compartís información directamente con esos proveedores, que aplican sus propias políticas de privacidad y condiciones. Para consultas sobre el alojamiento, usá el número de contacto publicado.",
+	"footer_site_info": "Información del sitio",
+	"trust_about_link": "Quiénes somos",
+	"trust_contact_link": "Contacto",
+	"trust_privacy_link": "Privacidad"
 }
