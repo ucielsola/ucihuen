@@ -4,16 +4,13 @@ import SEO from '../components/SEO.astro';
 import HomePage from '../components/HomePage.astro';
 import { getMessages } from '../lib/messages';
 
+export const prerender = false;
+
 const locale = Astro.currentLocale || 'es';
 const m = getMessages(locale);
 ---
 
 <Layout locale={locale}>
-	<SEO
-		slot="head"
-		title={m.home_title}
-		description={m.home_meta_description}
-		locale={locale}
-	/>
+	<SEO slot="head" title={m.home_title} description={m.home_meta_description} locale={locale} />
 	<HomePage locale={locale} m={m} />
 </Layout>

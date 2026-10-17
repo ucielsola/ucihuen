@@ -175,6 +175,6 @@
 	"trust_contact_link": "Contact",
 	"trust_privacy_link": "Privacy",
 	"trust_agents_title": "Cabañas Ucihuen Agent and Developer Resources",
-	"trust_agents_meta": "Documentation for Cabañas Ucihuen WebMCP tools for compatible browser agents.",
+	"trust_agents_meta": "Cabañas Ucihuen Agent and Developer Resources",
 	"trust_agents_body": "This page documents the WebMCP tools published by Cabañas Ucihuen for compatible browser agents. `get_stay_information` returns published location, capacity, amenities, and nearby information; `get_booking_options` returns the official Airbnb, Booking.com, and WhatsApp links; and `find_local_excursions` searches the excursions listed on this site. Use these tools when a traveler asks about this accommodation or activities near Lago Puelo. They are read-only: they do not check availability or rates, create reservations, or send messages. When WebMCP is unavailable, use the regular HTML pages, `llms.txt`, and `llms-full.txt`. Direct questions about dates, prices, and reservations to the official booking channels. Excursion information reflects what the accommodation publishes and does not guarantee current opening hours, access, or conditions. The tools are registered in the browser page through `navigator.modelContext` and preserve ordinary links and page content for other browsers."
 }
