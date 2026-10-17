@@ -59,6 +59,13 @@ test('Markdown negotiation varies responses and leaves normal HTML requests alon
 	assert.equal(await response.text(), body);
 	assert.equal(markdownResponse('text/markdown;q=0, text/html', body), null);
 	assert.equal(markdownResponse('text/html', body), null);
+	const notFound = markdownResponse(
+		'text/markdown',
+		'# Not found\n\nSee [llms.txt](https://ucihuen.com.ar/llms.txt).',
+		404
+	);
+	assert.equal(notFound.status, 404);
+	assert.equal(notFound.headers.get('Cache-Control'), 'no-store');
 });
 
 test('Vercel config preserves Astro-generated homepage and function routing', async () => {
@@ -68,6 +75,9 @@ test('Vercel config preserves Astro-generated homepage and function routing', as
 	assert.ok(output.routes.some((route) => route.handle === 'filesystem'));
 	assert.ok(output.routes.some((route) => route.src === '^/api/reviews/?$'));
 	assert.ok(output.routes.some((route) => route.src === '^/$' && route.dest === '_render'));
+	assert.ok(
+		output.routes.some((route) => route.src === '^(?:/(.*?))?/?$' && route.dest === '_render')
+	);
 });
 
 test('sitemap includes localized trust pages', async () => {
