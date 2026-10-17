@@ -5,10 +5,10 @@ import TrustPage from '../components/TrustPage.astro';
 import { getMessages } from '../lib/messages';
 
 export function getStaticPaths() {
-	return ['about', 'contact', 'privacy'].map((slug) => ({ params: { slug } }));
+	return ['about', 'contact', 'privacy', 'agents'].map((slug) => ({ params: { slug } }));
 }
 
-const slug = Astro.params.slug as 'about' | 'contact' | 'privacy';
+const slug = Astro.params.slug as 'about' | 'contact' | 'privacy' | 'agents';
 const locale = 'es';
 const m = getMessages(locale);
 const title = m[`trust_${slug}_title`];

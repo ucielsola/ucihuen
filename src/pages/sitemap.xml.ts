@@ -12,7 +12,7 @@ const pages: Page[] = [
 	{ path: '/', es: '/', en: '/en/', pt: '/pt/' },
 	{ path: '/galeria', es: '/galeria', en: '/en/galeria', pt: '/pt/galeria' },
 	{ path: '/paseos', es: '/paseos', en: '/en/paseos', pt: '/pt/paseos' },
-	...['about', 'contact', 'privacy'].map((path) => ({
+	...['about', 'contact', 'privacy', 'agents'].map((path) => ({
 		path: `/${path}`,
 		es: `/${path}`,
 		en: `/en/${path}`,

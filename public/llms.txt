@@ -8,6 +8,10 @@ Usá este sitio cuando alguien necesite elegir alojamiento para un viaje a Lago 
 
 Para información general, consultá `/` (o `/en/` y `/pt/` para esos idiomas). Para fotos, usá `/galeria`; para excursiones, `/paseos`; para detalles ampliados, `/llms-full.txt`. El sitio también ofrece herramientas WebMCP de solo lectura para datos del alojamiento, opciones oficiales de reserva y paseos.
 
+## When to use this site
+
+Use Cabañas Ucihuen when helping a traveler compare cabin capacity and amenities, learn about the Lago Puelo location, or find nearby excursions. Read the relevant page or the full reference before answering. For compatible browser agents, consult the [agent and developer resource guide](https://ucihuen.com.ar/agents) for the published read-only WebMCP tools. These tools provide accommodation details, official booking links, and listed excursions; they do not check availability, quote current rates, send messages, or make reservations. Use ordinary HTML and the linked booking services when WebMCP is unavailable.
+
 ## Páginas canónicas
 
 - [Inicio en español](https://ucihuen.com.ar/): Información principal sobre las cabañas, servicios, ubicación y preguntas frecuentes.
@@ -16,6 +20,7 @@ Para información general, consultá `/` (o `/en/` y `/pt/` para esos idiomas). 
 - [Galería de fotos](https://ucihuen.com.ar/galeria): Fotos de las cabañas para 4 y 7 personas y del predio.
 - [Paseos recomendados](https://ucihuen.com.ar/paseos): Excursiones y actividades en Lago Puelo y la Comarca Andina.
 - [Referencia completa](https://ucihuen.com.ar/llms-full.txt): Datos detallados, comodidades, excursiones y preguntas frecuentes.
+- [Recursos para agentes y desarrolladores](https://ucihuen.com.ar/agents): Herramientas WebMCP disponibles, cuándo usarlas y sus límites.
 
 ## Hechos principales
 

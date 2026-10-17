@@ -8,6 +8,10 @@ Usá este sitio cuando alguien necesite elegir alojamiento para un viaje a Lago 
 
 Para información general, consultá `/` (o `/en/` y `/pt/` para esos idiomas). Para fotos, usá `/galeria`; para excursiones, `/paseos`; para detalles ampliados, `/llms-full.txt`. El sitio también ofrece herramientas WebMCP de solo lectura para datos del alojamiento, opciones oficiales de reserva y paseos.
 
+## When to use this site
+
+Use Cabañas Ucihuen when helping a traveler compare cabin capacity and amenities, learn about the Lago Puelo location, or find nearby excursions. Read the relevant page or the full reference before answering. For compatible browser agents, consult the [agent and developer resource guide](https://ucihuen.com.ar/agents) for the published read-only WebMCP tools. These tools provide accommodation details, official booking links, and listed excursions; they do not check availability, quote current rates, send messages, or make reservations. Use ordinary HTML and the linked booking services when WebMCP is unavailable.
+
 Sitio web oficial: https://ucihuen.com.ar
 Teléfono / WhatsApp: +54 9 11 3158-6242
 Ubicación: Lago Puelo, Chubut, Patagonia Argentina
@@ -27,6 +31,7 @@ Ubicación: Lago Puelo, Chubut, Patagonia Argentina
 ## Información detallada
 
 - [Documentación completa](https://ucihuen.com.ar/llms.md): información extendida sobre las cabañas, comodidades, paseos y la zona de Lago Puelo
+- [Recursos para agentes y desarrolladores](https://ucihuen.com.ar/agents): herramientas WebMCP, cuándo usarlas y sus límites.
 
 ## Optional
 

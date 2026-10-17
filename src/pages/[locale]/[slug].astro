@@ -6,12 +6,12 @@ import { getMessages } from '../../lib/messages';
 
 export function getStaticPaths() {
 	return ['en', 'pt'].flatMap((locale) =>
-		['about', 'contact', 'privacy'].map((slug) => ({ params: { locale, slug } }))
+		['about', 'contact', 'privacy', 'agents'].map((slug) => ({ params: { locale, slug } }))
 	);
 }
 
 const locale = Astro.params.locale || 'en';
-const slug = Astro.params.slug as 'about' | 'contact' | 'privacy';
+const slug = Astro.params.slug as 'about' | 'contact' | 'privacy' | 'agents';
 const m = getMessages(locale);
 const title = m[`trust_${slug}_title`];
 const description = m[`trust_${slug}_meta`];
