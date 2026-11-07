@@ -1,5 +1,9 @@
 ---
-const apiKey = import.meta.env.PUBLIC_API_KEY;
+interface Props {
+	m: Record<string, string>;
+}
+
+const { m } = Astro.props;
 ---
 
 <div class="wrapper" id="map-wrapper">
@@ -16,20 +20,28 @@ const apiKey = import.meta.env.PUBLIC_API_KEY;
 				stroke-linecap="round"
 				stroke-linejoin="round"
 			>
-				<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-				<circle cx="12" cy="10" r="3" />
+				<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+				<circle cx="12" cy="10" r="3"></circle>
 			</svg>
 		</span>
 	</div>
 
 	<iframe
 		id="map-iframe"
-		title="Cabañas Ucihuen | Lago Puelo, Chubut, Arg."
+		title={m.home_map_title}
 		allowfullscreen
 		loading="lazy"
-		src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=Cabanas+Ucihuen`}
+		src="https://storage.googleapis.com/maps-solutions-fzymzrx8e3/commutes/914c/commutes.html"
 	></iframe>
 </div>
+<a
+	class="map-link"
+	href="https://www.google.com/maps/search/?api=1&query=Caba%C3%B1as%20Ucihuen%2C%20Lago%20Puelo"
+	target="_blank"
+	rel="noopener noreferrer"
+>
+	{m.home_map_link}
+</a>
 
 <script>
 	const skeleton = document.getElementById('map-skeleton');
@@ -59,10 +71,16 @@ const apiKey = import.meta.env.PUBLIC_API_KEY;
 	iframe {
 		width: 100%;
 		aspect-ratio: 16 / 9;
+		min-height: 360px;
 		border-radius: var(--radius-sm);
 		border: none;
 		opacity: 0;
 		transition: opacity 0.6s ease;
+	}
+
+	.map-link {
+		display: inline-block;
+		margin-top: 0.5rem;
 	}
 
 	.skeleton {
