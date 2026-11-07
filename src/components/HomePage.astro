@@ -131,7 +131,7 @@ const { locale, m } = Astro.props;
 		<img src="/icons/pin.webp" alt="" role="presentation" class="pin-icon" />
 		{m.home_location_subtitle}
 	</h3>
-	<Map m={m} />
+	<Map m={m} locale={locale} />
 </section>
 
 <section class="limited-width mobile-weather">
