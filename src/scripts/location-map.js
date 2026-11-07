@@ -5,7 +5,7 @@ const API_KEY = root.dataset.apiKey || '';
 const translations = JSON.parse(root.dataset.labels);
 // El ID predeterminado usa el estilo publicado para Ucihuen.
 const MAP_ID = root.dataset.mapId || '37609b52e1099339a5834130';
-const center = { lat: -42.066, lng: -71.614 };
+const center = { lat: -42.068482, lng: -71.6009084 };
 const home = {
 	id: 'home',
 	name: 'Cabañas Ucihuen',
@@ -229,7 +229,7 @@ async function locate(entry) {
 		if (entry === homeEntry) {
 			$('home-status').textContent = translations.homeLocated;
 			map.panTo(place.location);
-			map.setZoom(12);
+			map.setZoom(15);
 		} else entry.status.textContent = labels[entry.config.category] + ' · ' + translations.viewMap;
 	} catch (error) {
 		console.warn('No se pudo ubicar ' + entry.config.name, error);
@@ -251,7 +251,7 @@ async function initMap() {
 		Place = placesLibrary.Place;
 		map = new google.maps.Map($('map'), {
 			center,
-			zoom: 11,
+			zoom: 15,
 			mapId: MAP_ID,
 			mapTypeControl: false,
 			streetViewControl: false
