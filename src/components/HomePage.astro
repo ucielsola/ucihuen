@@ -127,7 +127,7 @@ const { locale, m } = Astro.props;
 
 <section class="limited-width">
 	<h2 class="title">{m.home_location_title}</h2>
-	<h3>
+	<h3 class="location-subtitle">
 		<img src="/icons/pin.webp" alt="" role="presentation" class="pin-icon" />
 		{m.home_location_subtitle}
 	</h3>
@@ -243,6 +243,10 @@ const { locale, m } = Astro.props;
 
 	h3 {
 		display: flex;
+	}
+
+	.location-subtitle {
+		margin-block-end: 1rem;
 	}
 
 	.pin-icon {
