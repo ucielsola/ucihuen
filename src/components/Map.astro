@@ -1,246 +1,93 @@
 ---
-interface Props {
-	m: Record<string, string>;
-	locale: string;
-}
-
-const { m, locale } = Astro.props;
-const labels = {
-	nature: m.map_nature,
-	services: m.map_services,
-	activities: m.map_activities,
-	searching: m.map_searching,
-	viewMap: m.map_view,
-	homeLocated: m.map_home_located,
-	notLocated: m.map_not_located,
-	loadError: m.map_load_error,
-	openMaps: m.home_map_link,
-	places: Array.from({ length: 10 }, (_, i) => m[`excursion_${i + 1}_title`])
-};
+const apiKey = import.meta.env.PUBLIC_API_KEY;
 ---
 
-<div
-	id="ucihuen-map"
-	lang={locale}
-	data-api-key={import.meta.env.PUBLIC_API_KEY || ''}
-	data-map-id={import.meta.env.PUBLIC_GOOGLE_MAP_ID || ''}
-	data-labels={JSON.stringify(labels)}
->
-	<div class="map-layout">
-		<aside class="map-sidebar" aria-label={m.home_map_title}>
-			<button class="map-home" id="home" type="button">
-				<strong>🏡 Cabañas Ucihuen</strong><small id="home-status">{m.map_searching}</small>
-			</button>
-			<div class="map-filters" role="group" aria-label={m.map_filter_label}>
-				<button type="button" data-filter="all" aria-pressed="true">{m.map_all}</button>
-				<button type="button" data-filter="nature" aria-pressed="false">{m.map_nature}</button>
-				<button type="button" data-filter="services" aria-pressed="false">{m.map_services}</button>
-				<button type="button" data-filter="activities" aria-pressed="false"
-					>{m.map_activities}</button
-				>
-			</div>
-			<div id="places" aria-live="polite"></div>
-		</aside>
-		<div class="map-wrap">
-			<div id="map" aria-label={m.home_map_title}></div>
-			<div class="map-message" id="message" role="status">{m.map_loading}</div>
-			<button id="fit" type="button">{m.map_fit}</button>
-		</div>
+<div class="wrapper" id="map-wrapper">
+	<div class="skeleton" id="map-skeleton" aria-hidden="true">
+		<span class="skeleton-icon">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="48"
+				height="48"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="1.2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			>
+				<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+				<circle cx="12" cy="10" r="3" />
+			</svg>
+		</span>
 	</div>
-	<a
-		class="map-link"
-		href="https://www.google.com/maps/search/?api=1&query=Caba%C3%B1as%20Ucihuen%2C%20Lago%20Puelo"
-		target="_blank"
-		rel="noopener noreferrer">{m.home_map_link}</a
-	>
+
+	<iframe
+		id="map-iframe"
+		title="Cabañas Ucihuen | Lago Puelo, Chubut, Arg."
+		allowfullscreen
+		loading="lazy"
+		src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=Cabanas+Ucihuen`}
+	></iframe>
 </div>
 
 <script>
-	import '../scripts/location-map.js';
+	const skeleton = document.getElementById('map-skeleton');
+	const iframe = document.getElementById('map-iframe');
+	if (skeleton && iframe) {
+		iframe.addEventListener('load', () => {
+			skeleton.style.display = 'none';
+			iframe.style.opacity = '1';
+		});
+		setTimeout(() => {
+			skeleton.style.display = 'none';
+			iframe.style.opacity = '1';
+		}, 3000);
+	}
 </script>
 
-<style is:global>
-	#ucihuen-map .map-layout {
-		display: grid;
-		grid-template-columns: minmax(220px, 330px) minmax(0, 1fr);
-		gap: 14px;
-	}
-	#ucihuen-map .map-sidebar {
-		padding: 14px;
-		border: 1px solid #d7e3d8;
-		border-radius: 12px;
-		background: #fffdf8;
-	}
-	#ucihuen-map .map-home,
-	#ucihuen-map .place {
-		display: block;
-		width: 100%;
-		padding: 11px;
-		text-align: left;
-		cursor: pointer;
-		font: inherit;
-	}
-	#ucihuen-map .map-home {
-		border: 0;
-		border-radius: 9px;
-		color: white;
-		background: #265b40;
-	}
-	#ucihuen-map .place {
-		border: 1px solid #dce6dc;
-		border-radius: 8px;
-		color: #234333;
-		background: white;
-	}
-	#ucihuen-map .place:hover,
-	#ucihuen-map .place:focus-visible {
-		border-color: #6b9b77;
-	}
-	#ucihuen-map .map-home strong,
-	#ucihuen-map .place strong,
-	#ucihuen-map .map-home small,
-	#ucihuen-map .place small {
-		display: block;
-	}
-	#ucihuen-map .map-home small,
-	#ucihuen-map .place small {
-		margin-top: 4px;
-		font-size: 0.8rem;
-		line-height: 1.35;
-	}
-	#ucihuen-map .map-home small {
-		color: #d7e8dc;
-	}
-	#ucihuen-map .place small {
-		color: #586b5d;
-	}
-	#ucihuen-map .place.error small {
-		color: #984622;
-	}
-	#ucihuen-map .place[hidden],
-	#ucihuen-map .map-message[hidden] {
-		display: none;
-	}
-	#ucihuen-map .map-filters {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 6px;
-		margin: 14px 0;
-	}
-	#ucihuen-map .map-filters button {
-		padding: 8px 10px;
-		border: 1px solid #cbdccd;
-		border-radius: 20px;
-		background: #f4f8f2;
-		color: #265b40;
-		font: inherit;
-		font-size: 0.8rem;
-		font-weight: bold;
-		cursor: pointer;
-	}
-	#ucihuen-map .map-filters button[aria-pressed='true'] {
-		border-color: #265b40;
-		background: #265b40;
-		color: white;
-	}
-	#ucihuen-map #places {
-		display: grid;
-		gap: 7px;
-		max-height: 580px;
-		overflow: auto;
-	}
-	#ucihuen-map .map-wrap {
+<style>
+	.wrapper {
+		border-radius: var(--radius-sm);
+		background: linear-gradient(var(--accent-teal) 0%, var(--accent-gold) 100%);
+		padding: 2px;
+		box-shadow: var(--shadow);
 		position: relative;
-		height: min(78vh, 760px);
-		min-height: 500px;
-		overflow: hidden;
-		border: 1px solid #d7e3d8;
-		border-radius: 12px;
-		background: #e2e9df;
-	}
-	#ucihuen-map #map {
-		width: 100%;
-		height: 100%;
-	}
-	#ucihuen-map .map-message {
-		position: absolute;
-		top: 14px;
-		left: 14px;
-		right: 14px;
-		max-width: 420px;
-		padding: 12px;
-		border-radius: 8px;
-		background: #fffdf8;
-		color: #234333;
-		box-shadow: 0 3px 12px #0002;
-		line-height: 1.4;
-	}
-	#ucihuen-map #fit {
-		position: absolute;
-		right: 14px;
-		bottom: 30px;
-		padding: 10px 12px;
-		border: 0;
-		border-radius: 8px;
-		background: #265b40;
-		color: white;
-		font-weight: bold;
-		cursor: pointer;
-	}
-	#ucihuen-map .pin {
-		display: grid;
-		place-items: center;
-		width: 36px;
-		height: 36px;
-		border: 2px solid white;
-		border-radius: 50%;
-		background: #4b8661;
-		box-shadow: 0 2px 8px #0005;
-		font-size: 18px;
-	}
-	#ucihuen-map .pin.services {
-		background: #e0a45d;
-	}
-	#ucihuen-map .pin.activities {
-		background: #df8972;
-	}
-	#ucihuen-map .pin.home-pin {
-		width: 52px;
-		height: 52px;
-		border: 4px solid #fff5df;
-		background: #265b40;
-		font-size: 25px;
-	}
-	#ucihuen-map .info {
-		min-width: 170px;
-		color: #234333;
-		font:
-			13px Arial,
-			sans-serif;
-	}
-	#ucihuen-map .info strong {
-		display: block;
-		margin-bottom: 8px;
-	}
-	#ucihuen-map .info a {
-		color: #265b40;
-		font-weight: bold;
-	}
-	#ucihuen-map .map-link {
-		display: inline-block;
 		margin-top: 0.5rem;
 	}
-	@media (max-width: 760px) {
-		#ucihuen-map .map-layout {
-			grid-template-columns: 1fr;
+
+	iframe {
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		border-radius: var(--radius-sm);
+		border: none;
+		opacity: 0;
+		transition: opacity 0.6s ease;
+	}
+
+	.skeleton {
+		position: absolute;
+		inset: 2px;
+		border-radius: var(--radius-sm);
+		background: var(--bg-color);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		animation: shimmer 1.5s ease-in-out infinite;
+	}
+
+	.skeleton-icon {
+		color: var(--base-color);
+		opacity: 0.15;
+	}
+
+	@keyframes shimmer {
+		0%,
+		100% {
+			opacity: 0.5;
 		}
-		#ucihuen-map .map-wrap {
-			height: 55vh;
-			min-height: 360px;
-			grid-row: 1;
-		}
-		#ucihuen-map #places {
-			max-height: 380px;
+		50% {
+			opacity: 1;
 		}
 	}
 </style>
