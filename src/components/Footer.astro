@@ -1,5 +1,6 @@
 ---
 import { getMessages } from '$lib/messages';
+import { localizeHref } from '$lib/i18n';
 import { AIRBNB_URL, BOOKING_URL, PHONE } from '$lib/config';
 
 interface Props {
@@ -78,6 +79,7 @@ const m = getMessages(locale);
 		<a href={locale === 'es' ? '/about' : `/${locale}/about`}>{m.trust_about_link}</a>
 		<a href={locale === 'es' ? '/contact' : `/${locale}/contact`}>{m.trust_contact_link}</a>
 		<a href={locale === 'es' ? '/privacy' : `/${locale}/privacy`}>{m.trust_privacy_link}</a>
+		<a href={localizeHref('/agents', locale)}>{m.trust_agents_link}</a>
 	</nav>
 </footer>
 

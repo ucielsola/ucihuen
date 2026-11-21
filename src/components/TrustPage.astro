@@ -14,6 +14,7 @@ const paragraphs = content.split('\n\n');
 <article class="trust-page">
 	<h1>{title}</h1>
 	{paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+	<slot />
 	<nav
 		aria-label={locale === 'es'
 			? 'Información del sitio'

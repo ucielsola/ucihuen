@@ -1,0 +1,140 @@
+{
+	"site": "https://ucihuen.com.ar",
+	"modes": {
+		"A": {
+			"seed": "/",
+			"scope": "First-party HTML pages only. Follow same-site HTML hyperlinks and hreflang alternatives. Do not request Markdown, text files, APIs or WebMCP."
+		},
+		"B": {
+			"seed": "/llms.txt",
+			"scope": "Fetch the index and any first-party resources directly linked by it as needed. Treat external links as referral targets without fetching them."
+		},
+		"C": {
+			"seed": "/llms-full.txt",
+			"scope": "Use only the body of the full reference. You may quote links as referrals, but do not fetch them."
+		}
+	},
+	"questions": [
+		{
+			"id": "group-of-six",
+			"question": "Can six people stay at Ucihuen?",
+			"expected": [
+				"Yes, six fit in the cabin for up to seven.",
+				"The four-person cabin cannot accommodate six.",
+				"Capacity does not confirm availability for any dates."
+			],
+			"unsupported": ["A cabin is currently available or booked."],
+			"htmlSources": ["/", "/en", "/pt", "/galeria"]
+		},
+		{
+			"id": "pets",
+			"question": "Are pets allowed?",
+			"expected": ["Yes, the cabins are pet-friendly."],
+			"unsupported": ["A pet fee, size limit, number limit or breed restriction."],
+			"htmlSources": ["/", "/en", "/pt", "/about"]
+		},
+		{
+			"id": "cabin-comparison",
+			"question": "What is the difference between the two cabins?",
+			"expected": [
+				"The larger cabin fits up to seven, has two floors and has two bedrooms.",
+				"The smaller cabin fits up to four, has one floor and is described with a kitchen-dining room and a living room with futons.",
+				"The smaller cabin's bedroom count needs confirmation because the listings disagree."
+			],
+			"unsupported": ["A confirmed bedroom count for the smaller cabin or unlisted floor area."],
+			"htmlSources": ["/", "/en", "/pt", "/galeria"]
+		},
+		{
+			"id": "four-person-bedrooms",
+			"question": "Does the cabin for four have one or two bedrooms?",
+			"expected": [
+				"The bedroom count needs confirmation.",
+				"Airbnb describes two bedrooms and Booking.com describes one bedroom plus sofa beds.",
+				"Confirm the layout with Ucihuen through WhatsApp."
+			],
+			"unsupported": [
+				"A definitive bedroom count or a claim that both listings describe the same sleeping setup."
+			],
+			"htmlSources": ["/", "/en", "/pt", "/contact"]
+		},
+		{
+			"id": "park-distance",
+			"question": "How far is the property from Lago Puelo National Park?",
+			"expected": ["The property advertises a distance of less than 3 km to the park."],
+			"unsupported": [
+				"A precise road distance, travel time or a distance of 4 km from the property."
+			],
+			"htmlSources": ["/", "/en", "/pt"]
+		},
+		{
+			"id": "parking",
+			"question": "Is parking available?",
+			"expected": ["Shaded parking is available on the property."],
+			"unsupported": ["A guaranteed number of spaces, garage or EV charger."],
+			"htmlSources": ["/", "/en", "/pt", "/about"]
+		},
+		{
+			"id": "breakfast",
+			"question": "Does the accommodation provide breakfast?",
+			"expected": [
+				"A welcome breakfast or kit is provided.",
+				"It includes coffee, tea, mate cocido, sugar and homemade jam."
+			],
+			"unsupported": ["Daily breakfast, restaurant service or a buffet."],
+			"htmlSources": ["/", "/en", "/pt"]
+		},
+		{
+			"id": "excursions",
+			"question": "What excursions are recommended nearby?",
+			"expected": [
+				"Name at least three of the ten published places, including Lago Puelo National Park.",
+				"Examples include Pasarela Río Azul, Balneario Cayún, Feria Regional El Bolsón, Laberinto Patagonia, Centro Ski Perito Moreno, Puerto Patriada, Pasarela La Confluencia, Sendero Mirador del Lago and Sendero Antiguos Pobladores.",
+				"Attribute the recommendations to the site's excursions guide or full reference."
+			],
+			"unsupported": ["Guaranteed opening hours, access, ticket prices or conditions."],
+			"htmlSources": ["/paseos", "/en/paseos", "/pt/paseos"]
+		},
+		{
+			"id": "reservation",
+			"question": "How can guests make a reservation?",
+			"expected": [
+				"The site provides Airbnb, Booking.com and direct WhatsApp as official booking channels.",
+				"Give at least one of the site's exact booking links or the official WhatsApp number (+54 9 11 3158-6242).",
+				"Check dates and availability using a booking channel."
+			],
+			"unsupported": ["This site or WebMCP places a booking; any guarantee of availability."],
+			"htmlSources": ["/", "/en", "/pt", "/contact", "/en/contact", "/pt/contact"]
+		},
+		{
+			"id": "january-price",
+			"question": "What is the price for five nights in January?",
+			"expected": [
+				"The site does not publish a quote.",
+				"Quote depends on the exact dates (including year), guests and cabin; use an official booking channel."
+			],
+			"unsupported": ["Any numeric price, fee, minimum stay or available dates."],
+			"htmlSources": ["/contact", "/en/contact", "/pt/contact", "/about", "/agents"]
+		},
+		{
+			"id": "amenities",
+			"question": "What amenities are included?",
+			"expected": [
+				"Name at least five amenities from the site. Examples include fibre Wi-Fi, shaded parking, individual grill, equipped kitchen, hot water, heating, streaming TV, bedding and towels, patio, and welcome breakfast kit."
+			],
+			"unsupported": [
+				"An unlisted feature, such as a swimming pool, or a guaranteed measured internet speed."
+			],
+			"htmlSources": ["/", "/en", "/pt", "/about"]
+		},
+		{
+			"id": "languages",
+			"question": "Is information available in English and Portuguese?",
+			"expected": [
+				"Yes, the website has both English and Portuguese versions.",
+				"Give the canonical homepage URLs https://ucihuen.com.ar/en and https://ucihuen.com.ar/pt."
+			],
+			"unsupported": ["The hosts offer service in those languages."],
+			"htmlSources": ["/", "/en", "/pt"]
+		}
+	]
+}

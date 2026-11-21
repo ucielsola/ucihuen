@@ -1,0 +1,35 @@
+---
+import { getAgentTools, stayTopics } from '../lib/data/agentTools';
+import { getMessages } from '../lib/messages';
+
+const { locale } = Astro.props;
+const m = getMessages(locale);
+const tools = getAgentTools(locale);
+---
+
+<dl>
+	{
+		Object.entries(tools).map(([key, tool]) => (
+			<>
+				<dt>
+					<code>{tool.name}</code>
+				</dt>
+				<dd>
+					{tool.description}
+					{key === 'stay' && (
+						<span>
+							{' '}
+							(<code>{stayTopics.join(' | ')}</code>)
+						</span>
+					)}
+				</dd>
+			</>
+		))
+	}
+</dl>
+
+<h2>{m.trust_agents_docs}</h2>
+<ul>
+	<li><a href="/llms.txt">llms.txt</a></li>
+	<li><a href="/llms-full.txt">llms-full.txt</a></li>
+</ul>

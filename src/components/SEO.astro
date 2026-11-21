@@ -1,6 +1,6 @@
 ---
-import { SITE_URL, AIRBNB_URL, BOOKING_URL, PHONE } from '$lib/config';
-import { localizeHref, delocalizePath } from '$lib/i18n';
+import { SITE_URL, AIRBNB_URL, BOOKING_URL, MAP_URL, PHONE } from '$lib/config';
+import { delocalizePath, locales, sitePageUrl } from '$lib/i18n';
 
 interface Props {
 	title: string;
@@ -12,7 +12,6 @@ const { title, description, locale } = Astro.props;
 
 const OG_IMAGE = `${SITE_URL}/images/ucihuen_open_graph.png`;
 const LOCALE_MAP: Record<string, string> = { es: 'es_AR', en: 'en_US', pt: 'pt_BR' };
-const allLocales = ['es', 'en', 'pt'];
 
 const ogLocale = LOCALE_MAP[locale] || 'es_AR';
 const altLocales = Object.entries(LOCALE_MAP)
@@ -20,7 +19,7 @@ const altLocales = Object.entries(LOCALE_MAP)
 	.map(([, v]) => v);
 
 const currentPath = delocalizePath(Astro.url.pathname);
-const canonicalUrl = `${SITE_URL}${Astro.url.pathname}`;
+const canonicalUrl = sitePageUrl(currentPath, locale);
 const isHomePage = currentPath === '/';
 
 const jsonLdData = JSON.stringify({
@@ -30,7 +29,6 @@ const jsonLdData = JSON.stringify({
 	description,
 	url: SITE_URL,
 	telephone: PHONE,
-	priceRange: '$$',
 	address: {
 		'@type': 'PostalAddress',
 		streetAddress: 'Los Alerces 880',
@@ -39,14 +37,8 @@ const jsonLdData = JSON.stringify({
 		postalCode: '9211',
 		addressCountry: 'AR'
 	},
-	geo: {
-		'@type': 'GeoCoordinates',
-		latitude: -42.0727885,
-		longitude: -71.6080007
-	},
 	image: OG_IMAGE,
-	hasMap:
-		'https://www.google.com/maps/search/?api=1&query=Caba%C3%B1as%20Ucihuen%2C%20Lago%20Puelo',
+	hasMap: MAP_URL,
 	petsAllowed: true,
 	amenityFeature: [
 		{ '@type': 'LocationFeatureSpecification', name: 'WiFi', value: true },
@@ -73,8 +65,7 @@ const organizationJsonLdData = JSON.stringify({
 	contactPoint: {
 		'@type': 'ContactPoint',
 		telephone: PHONE,
-		contactType: 'reservations and customer service',
-		availableLanguage: ['Spanish', 'English', 'Portuguese']
+		contactType: 'reservations and customer service'
 	},
 	address: {
 		'@type': 'PostalAddress',
@@ -91,11 +82,11 @@ const organizationJsonLdData = JSON.stringify({
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalUrl} />
 {
-	allLocales.map((loc) => (
-		<link rel="alternate" hreflang={loc} href={`${SITE_URL}${localizeHref(currentPath, loc)}`} />
+	locales.map((loc) => (
+		<link rel="alternate" hreflang={loc} href={sitePageUrl(currentPath, loc)} />
 	))
 }
-<link rel="alternate" hreflang="x-default" href={`${SITE_URL}${currentPath}`} />
+<link rel="alternate" hreflang="x-default" href={sitePageUrl(currentPath)} />
 <meta property="og:site_name" content="Cabañas Ucihuen" />
 <meta property="og:type" content="business.business" />
 <meta property="og:image" content={OG_IMAGE} />
