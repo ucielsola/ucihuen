@@ -6,7 +6,7 @@ import InstagramEmbed from './InstagramEmbed.astro';
 import Faq from './Faq.astro';
 import Weather from './WeatherIsland.svelte';
 import SliderReviews from './SliderReviews.svelte';
-import { AIRBNB_URL, BOOKING_URL, WHATSAPP_URL } from '../lib/config';
+import { AIRBNB_URL, BOOKING_URL, PARK_URL, WHATSAPP_URL } from '../lib/config';
 
 interface Props {
 	locale: string;
@@ -21,7 +21,7 @@ const { locale, m } = Astro.props;
 		<p>
 			{m.home_desc_1_before}
 			<a
-				href="https://lagopuelo.gob.ar/turismo/"
+				href="https://turismo.lagopuelo.gob.ar/"
 				target="_blank"
 				rel="noopener noreferrer"
 				title={m.home_link_lago_puelo}
@@ -33,7 +33,7 @@ const { locale, m } = Astro.props;
 		<p>
 			{m.home_desc_2_before}
 			<a
-				href="https://lagopuelo.gob.ar/turismo/a-donde-vamos/parque-nacional-lago-puelo/"
+				href={PARK_URL}
 				target="_blank"
 				rel="noopener noreferrer"
 				title={m.home_link_parque_nacional}
@@ -140,7 +140,7 @@ const { locale, m } = Astro.props;
 	<InstagramEmbed />
 </section>
 
-<section class="no-padding full-width">
+<section id="resenas" class="no-padding full-width">
 	<div class="limited-width reviews">
 		<h2 class="title">{m.home_reviews_title}</h2>
 	</div>

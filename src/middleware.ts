@@ -1,5 +1,5 @@
 import { defineMiddleware } from 'astro:middleware';
-import agentHomeMarkdown from './content/agent-home.md?raw';
+import { agentHomeMarkdown } from './lib/agentMarkdown';
 import { markdownResponse } from './lib/contentNegotiation.mjs';
 
 export const onRequest = defineMiddleware(async (context, next) => {

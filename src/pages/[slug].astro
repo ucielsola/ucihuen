@@ -2,7 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import SEO from '../components/SEO.astro';
 import TrustPage from '../components/TrustPage.astro';
-import { getMessages } from '../lib/messages';
+import { PHONE } from '$lib/config';
+import AgentResources from '../components/AgentResources.astro';
+import { getMessages, t } from '../lib/messages';
 
 export function getStaticPaths() {
 	return ['about', 'contact', 'privacy', 'agents'].map((slug) => ({ params: { slug } }));
@@ -13,10 +15,12 @@ const locale = 'es';
 const m = getMessages(locale);
 const title = m[`trust_${slug}_title`];
 const description = m[`trust_${slug}_meta`];
-const content = m[`trust_${slug}_body`];
+const content = t(locale, `trust_${slug}_body`, { phone: PHONE });
 ---
 
 <Layout locale={locale}>
 	<SEO slot="head" title={title} description={description} locale={locale} />
-	<TrustPage locale={locale} title={title} content={content} />
+	<TrustPage locale={locale} title={title} content={content}>
+		{slug === 'agents' && <AgentResources locale={locale} />}
+	</TrustPage>
 </Layout>

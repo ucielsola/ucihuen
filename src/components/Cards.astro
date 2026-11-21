@@ -1,6 +1,7 @@
 ---
 import { getMessages } from '$lib/messages';
 import { localizeHref } from '$lib/i18n';
+import { getCabins } from '$lib/data/stay';
 
 interface Props {
 	locale: string;
@@ -9,26 +10,7 @@ interface Props {
 const { locale } = Astro.props;
 const m = getMessages(locale);
 
-const cards = [
-	{
-		id: 'cab-1',
-		image: '/images/cab-1.webp',
-		alt: m.cabin_7_alt,
-		mobileGuests: m.cabin_7_mobile_guests,
-		title: m.cabin_7_title,
-		floors: m.cabin_7_floors,
-		rooms: [m.room_bedrooms_2, m.room_living_dining, m.room_kitchen, m.room_bathroom]
-	},
-	{
-		id: 'cab-2',
-		image: '/images/cab-2.webp',
-		alt: m.cabin_4_alt,
-		mobileGuests: m.cabin_4_mobile_guests,
-		title: m.cabin_4_title,
-		floors: m.cabin_4_floors,
-		rooms: [m.room_bedrooms_2, m.room_kitchen_dining, m.room_living_futons, m.room_bathroom]
-	}
-];
+const cards = getCabins(locale);
 ---
 
 <div class="container">
@@ -36,7 +18,7 @@ const cards = [
 		cards.map((card) => (
 			<a class="card" href={localizeHref('/galeria#' + card.id, locale)}>
 				<div class="title-container">
-					<img loading="lazy" src={card.image} alt={card.alt} />
+					<img loading="lazy" src={`/images/${card.id}.webp`} alt={card.alt} />
 					<div class="gradient" />
 					<h3 class="mobile-title">
 						{m.cabin_mobile_title_prefix} <br />

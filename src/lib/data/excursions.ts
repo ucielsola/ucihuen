@@ -1,3 +1,5 @@
+import { PARK_URL } from '../config';
+
 interface Excursion {
 	id: number;
 	titleKey: string;
@@ -8,6 +10,15 @@ interface Excursion {
 	websiteUrl: string | null;
 }
 
+function directions(destination: string) {
+	const params = new URLSearchParams({
+		api: '1',
+		origin: 'Cabañas Ucihuen, Los Alerces 880, Lago Puelo',
+		destination
+	});
+	return `https://www.google.com/maps/dir/?${params}`;
+}
+
 export const excursions: Excursion[] = [
 	{
 		id: 1,
@@ -15,9 +26,8 @@ export const excursions: Excursion[] = [
 		descKey: 'excursion_1_desc',
 		tagKeys: ['excursion_tag_nature', 'excursion_tag_trails', 'excursion_tag_trekking'],
 		image: '/paseos/puelo.webp',
-		mapsUrl:
-			'https://www.google.com/maps/dir/Caba%C3%B1as+Ucihuen,+Los+Coihues+entre+Los+Alerces,+Las+Lauras+y,+U8431+Lago+Puelo,+Chubut/Lago+Puelo+National+Park,+Unnamed+Road,,+Chubut/',
-		websiteUrl: 'https://lagopuelo.gob.ar/turismo/a-donde-vamos/parque-nacional-lago-puelo/'
+		mapsUrl: directions('Parque Nacional Lago Puelo, Chubut'),
+		websiteUrl: PARK_URL
 	},
 	{
 		id: 2,
@@ -25,10 +35,8 @@ export const excursions: Excursion[] = [
 		descKey: 'excursion_2_desc',
 		tagKeys: ['excursion_tag_beach', 'excursion_tag_trekking', 'excursion_tag_nature'],
 		image: '/paseos/pasarela.webp',
-		mapsUrl:
-			'https://www.google.com/maps/dir/Caba%C3%B1as+Ucihuen,+Los+Coihues+entre+Los+Alerces,+Las+Lauras+y,+U8431+Lago+Puelo,+Chubut/Pasarela+R%C3%ADo+Azul,+costa+r%C3%ADo+azul,+C.+Roca+del+Tiempo,+U9211+Lago+Puelo,+Chubut/',
-		websiteUrl:
-			'https://lagopuelo.gob.ar/turismo/la-pasarela-del-rio-azul-balneario-en-la-corillera/'
+		mapsUrl: directions('Pasarela Río Azul, Lago Puelo, Chubut'),
+		websiteUrl: 'https://turismo.lagopuelo.gob.ar/notas/pasarela-rio-azul.html'
 	},
 	{
 		id: 3,
@@ -36,8 +44,7 @@ export const excursions: Excursion[] = [
 		descKey: 'excursion_3_desc',
 		tagKeys: ['excursion_tag_beach', 'excursion_tag_nature', 'excursion_tag_trails'],
 		image: '/paseos/cayun.webp',
-		mapsUrl:
-			'https://www.google.com/maps/dir/Caba%C3%B1as+Ucihuen,+Los+Coihues+entre+Los+Alerces,+Las+Lauras+y,+U8431+Lago+Puelo,+Chubut/Balneario+Cayun,+Chubut/',
+		mapsUrl: directions('Balneario Cayún, Chubut'),
 		websiteUrl: null
 	},
 	{
@@ -46,8 +53,7 @@ export const excursions: Excursion[] = [
 		descKey: 'excursion_4_desc',
 		tagKeys: ['excursion_tag_market', 'excursion_tag_gastronomy', 'excursion_tag_family'],
 		image: '/paseos/feria-artesana.webp',
-		mapsUrl:
-			'https://www.google.com/maps/dir/Caba%C3%B1as+Ucihuen,+Los+Coihues+entre+Los+Alerces,+Las+Lauras+y,+U8431+Lago+Puelo,+Chubut/Feria+Regional+El+Bols%C3%B3n,+Gral.+Roca,+R8430+El+Bols%C3%B3n,+R%C3%ADo+Negro/',
+		mapsUrl: directions('Feria Regional El Bolsón, Plaza Pagano, Río Negro'),
 		websiteUrl: 'https://www.turismoelbolson.gob.ar/feria-regional-artesanos'
 	},
 	{
@@ -56,8 +62,7 @@ export const excursions: Excursion[] = [
 		descKey: 'excursion_5_desc',
 		tagKeys: ['excursion_tag_adventure', 'excursion_tag_nature', 'excursion_tag_family'],
 		image: '/paseos/laberinto.webp',
-		mapsUrl:
-			'https://www.google.com/maps/dir/Caba%C3%B1as+Ucihuen,+Los+Coihues+entre+Los+Alerces,+Las+Lauras+y,+U8431+Lago+Puelo,+Chubut/Laberinto+Patagonia,+km+3,7+Camino+a,+El+Desemboque,+U9211+El+Hoyo,+Chubut/',
+		mapsUrl: directions('Laberinto Patagonia, El Hoyo, Chubut'),
 		websiteUrl: 'https://laberintopatagonia.com/'
 	},
 	{
@@ -66,8 +71,7 @@ export const excursions: Excursion[] = [
 		descKey: 'excursion_6_desc',
 		tagKeys: ['excursion_tag_ski', 'excursion_tag_adventure', 'excursion_tag_trekking'],
 		image: '/paseos/ski.webp',
-		mapsUrl:
-			'https://www.google.com/maps/dir/Caba%C3%B1as+Ucihuen,+Los+Coihues+entre+Los+Alerces,+Las+Lauras+y,+U8431+Lago+Puelo,+Chubut/Cerro+Perito+Moreno,+R%C3%ADo+Negro+Province/',
+		mapsUrl: directions('Cerro Perito Moreno, Río Negro'),
 		websiteUrl: 'https://www.laderas.com.ar/'
 	},
 	{
@@ -76,9 +80,8 @@ export const excursions: Excursion[] = [
 		descKey: 'excursion_7_desc',
 		tagKeys: ['excursion_tag_beach', 'excursion_tag_water_sports', 'excursion_tag_nature'],
 		image: '/paseos/patriada.webp',
-		mapsUrl:
-			'https://www.google.com/maps/dir/Caba%C3%B1as+Ucihuen,+Los+Coihues+entre+Los+Alerces,+Las+Lauras+y,+U8431+Lago+Puelo,+Chubut/Puerto+Patriada,+RFM5%2B3W,+El+Hoyo,+Chubut/',
-		websiteUrl: 'https://turismoelhoyo.com.ar/puerto-patriada/'
+		mapsUrl: directions('Puerto Patriada, El Hoyo, Chubut'),
+		websiteUrl: 'https://turismoelhoyo.ar/site/'
 	},
 	{
 		id: 8,
@@ -86,8 +89,7 @@ export const excursions: Excursion[] = [
 		descKey: 'excursion_8_desc',
 		tagKeys: ['excursion_tag_nature', 'excursion_tag_trails', 'excursion_tag_family'],
 		image: '/paseos/confluencia.webp',
-		mapsUrl:
-			'https://www.google.com/maps/dir/Caba%C3%B1as+Ucihuen,+Los+Coihues+entre+Los+Alerces,+Las+Lauras+y,+U8431+Lago+Puelo,+Chubut/Pasarela+La+Confluencia,+Chubut/',
+		mapsUrl: directions('Pasarela La Confluencia, Chubut'),
 		websiteUrl: null
 	},
 	{
@@ -96,9 +98,8 @@ export const excursions: Excursion[] = [
 		descKey: 'excursion_9_desc',
 		tagKeys: ['excursion_tag_trekking', 'excursion_tag_viewpoint', 'excursion_tag_nature'],
 		image: '/paseos/mirador.webp',
-		mapsUrl:
-			'https://www.google.com/maps/dir/Caba%C3%B1as+Ucihuen,+Los+Coihues+entre+Los+Alerces,+Las+Lauras+y,+U8431+Lago+Puelo,+Chubut/Sendero+Mirador+del+Lago,+Chubut/',
-		websiteUrl: 'https://lagopuelo.gob.ar/turismo/a-donde-vamos/parque-nacional-lago-puelo/'
+		mapsUrl: directions('Sendero Mirador del Lago, Lago Puelo, Chubut'),
+		websiteUrl: `${PARK_URL}/actividades`
 	},
 	{
 		id: 10,
@@ -106,8 +107,7 @@ export const excursions: Excursion[] = [
 		descKey: 'excursion_10_desc',
 		tagKeys: ['excursion_tag_history', 'excursion_tag_trails', 'excursion_tag_nature'],
 		image: '/paseos/pobladores.webp',
-		mapsUrl:
-			'https://www.google.com/maps/dir/Caba%C3%B1as+Ucihuen,+Los+Coihues+entre+Los+Alerces,+Las+Lauras+y,+U8431+Lago+Puelo,+Chubut/-42.082592,-71.5963947/@-42.0829035,-71.5967969,18.29z/data=!4m9!4m8!1m5!1m1!1s0x961bec990d4c5455:0xe7f57694b5338ff2!2m2!1d-71.6009084!2d-42.068482!1m0!3e0?entry=ttu&g_ep=EgoyMDI2MDIwNC4wIKXMDSoASAFQAw%3D%3D',
-		websiteUrl: 'https://lagopuelo.gob.ar/turismo/sendero-antiguos-pobladores/'
+		mapsUrl: directions('-42.082592,-71.5963947'),
+		websiteUrl: 'https://turismo.lagopuelo.gob.ar/historia.html'
 	}
 ];

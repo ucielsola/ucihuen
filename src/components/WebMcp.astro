@@ -1,32 +1,40 @@
 ---
-import { AIRBNB_URL, BOOKING_URL, PHONE, WHATSAPP_URL } from '../lib/config';
+import { bookingOptions } from '../lib/config';
+import { getAgentTools, stayTopics } from '../lib/data/agentTools';
 import { excursions } from '../lib/data/excursions';
+import { amenityIcons, getCabins } from '../lib/data/stay';
+import { sitePageUrl } from '../lib/i18n';
 import { getMessages } from '../lib/messages';
 
 const { locale } = Astro.props;
 const m = getMessages(locale);
-const toolTitles = {
-	stay: m.webmcp_stay_tool_title,
-	booking: m.webmcp_booking_tool_title,
-	excursions: m.webmcp_excursions_tool_title
-};
+const tools = getAgentTools(locale);
+const cabins = getCabins(locale);
 
 const agentSiteData = {
 	stay: {
 		name: 'Cabañas Ucihuen',
+		source: sitePageUrl('/', locale),
 		location: m.faq_location_answer,
-		capacity: [m.cabin_7_title, m.cabin_4_title],
+		capacity: cabins.map((cabin) => cabin.title),
+		cabins: cabins.map(({ title, capacity, bedrooms, floors, rooms }) => ({
+			title,
+			capacity,
+			bedrooms,
+			floors,
+			rooms
+		})),
+		bedroomNote: m.faq_bedrooms_answer,
 		amenities: m.home_amenities_desc,
-		nearby: m.home_desc_2_after
+		amenityList: Object.keys(amenityIcons).map((key) => m[key]),
+		nearby: `${m.home_desc_2_before} ${m.home_desc_2_link}${m.home_desc_2_after}`
 	},
 	booking: {
+		source: sitePageUrl('/contact', locale),
 		message: m.booking_agent_availability,
-		options: [
-			{ name: 'Booking.com', url: BOOKING_URL },
-			{ name: 'Airbnb', url: AIRBNB_URL },
-			{ name: 'WhatsApp', url: WHATSAPP_URL, phone: PHONE }
-		]
+		options: bookingOptions
 	},
+	excursionsSource: sitePageUrl('/paseos', locale),
 	excursions: excursions.map((excursion) => ({
 		name: m[excursion.titleKey],
 		description: m[excursion.descKey],
@@ -37,84 +45,116 @@ const agentSiteData = {
 };
 ---
 
-<script define:vars={{ agentSiteData, toolTitles }}>
-	const modelContext = document.modelContext || navigator.modelContext;
-	if (modelContext) {
+<script define:vars={{ agentSiteData, tools, stayTopics }}>
+	const modelContext = document.modelContext ?? navigator.modelContext;
+	if (typeof modelContext?.registerTool === 'function') {
 		void (async () => {
-			const readOnly = { readOnlyHint: true };
-			try {
-				await modelContext.registerTool({
-					name: 'get_stay_information',
-					title: toolTitles.stay,
-					description:
-						'Return verified, published information about Cabañas Ucihuen, its location, capacity, amenities and nearby Lago Puelo National Park.',
-					inputSchema: {
-						type: 'object',
-						properties: {
-							topic: {
-								type: 'string',
-								enum: ['all', 'location', 'capacity', 'amenities', 'nearby'],
-								description: 'Which part of the published stay information to return.'
-							}
+			const string = { type: 'string' };
+			const url = { type: 'string', format: 'uri' };
+			const list = (items) => ({ type: 'array', items });
+			const object = (properties, required = Object.keys(properties)) => ({
+				type: 'object',
+				properties,
+				required,
+				additionalProperties: false
+			});
+			const { stay, booking, excursions, excursionsSource } = agentSiteData;
+			const capacity = {
+				capacity: stay.capacity,
+				cabins: stay.cabins,
+				bedroomNote: stay.bedroomNote
+			};
+			const amenities = { amenities: stay.amenities, amenityList: stay.amenityList };
+			const stayByTopic = {
+				location: { location: stay.location },
+				capacity,
+				amenities,
+				nearby: { nearby: stay.nearby }
+			};
+			const definitions = [
+				{
+					...tools.stay,
+					inputSchema: object({ topic: { type: 'string', enum: stayTopics } }, []),
+					outputSchema: object(
+						{
+							source: url,
+							name: string,
+							location: string,
+							capacity: list(string),
+							cabins: list(
+								object({
+									title: string,
+									capacity: { type: 'integer' },
+									bedrooms: { type: ['integer', 'null'] },
+									floors: string,
+									rooms: list(string)
+								})
+							),
+							bedroomNote: string,
+							amenities: string,
+							amenityList: list(string),
+							nearby: string
 						},
-						additionalProperties: false
-					},
-					annotations: readOnly,
-					execute: ({ topic = 'all' }) => {
-						if (topic === 'all') return agentSiteData.stay;
-						return { [topic]: agentSiteData.stay[topic] };
-					}
-				});
-
-				await modelContext.registerTool({
-					name: 'get_booking_options',
-					title: toolTitles.booking,
-					description:
-						'Return the official Booking.com, Airbnb and WhatsApp contact links for Cabañas Ucihuen. Does not check availability or make a reservation.',
-					inputSchema: { type: 'object', properties: {}, additionalProperties: false },
-					annotations: readOnly,
-					execute: () => agentSiteData.booking
-				});
-
-				await modelContext.registerTool({
-					name: 'find_local_excursions',
-					title: toolTitles.excursions,
-					description:
-						'Search the excursions published by Cabañas Ucihuen near Lago Puelo. Returns descriptions and official map or destination links; does not check current opening hours or conditions.',
-					inputSchema: {
-						type: 'object',
-						properties: {
-							query: {
-								type: 'string',
-								maxLength: 120,
-								description:
-									'A destination or activity, such as a beach, trail, market or national park.'
-							}
-						},
-						required: ['query'],
-						additionalProperties: false
-					},
-					annotations: readOnly,
-					execute: ({ query }) => {
-						const safeQuery = typeof query === 'string' ? query.slice(0, 120).trim() : '';
-						if (!safeQuery) return { query: '', results: [] };
-						const normalizedQuery = safeQuery
-							.normalize('NFD')
-							.replace(/\p{Diacritic}/gu, '')
-							.toLocaleLowerCase();
-						const results = agentSiteData.excursions.filter((excursion) =>
-							[excursion.name, excursion.description, ...excursion.categories]
-								.join(' ')
+						['source']
+					),
+					execute: ({ topic = 'all' } = {}) =>
+						stayTopics.includes(topic) && topic !== 'all'
+							? { source: stay.source, ...stayByTopic[topic] }
+							: stay
+				},
+				{
+					...tools.booking,
+					inputSchema: object({}),
+					outputSchema: object({
+						source: url,
+						message: string,
+						options: list(object({ name: string, url, phone: string }, ['name', 'url']))
+					}),
+					execute: () => booking
+				},
+				{
+					...tools.excursions,
+					inputSchema: object({ query: { type: 'string', minLength: 1, maxLength: 120 } }),
+					outputSchema: object({
+						source: url,
+						query: string,
+						results: list(
+							object({
+								name: string,
+								description: string,
+								categories: list(string),
+								directions: url,
+								website: { type: ['string', 'null'], format: 'uri' }
+							})
+						)
+					}),
+					execute: ({ query } = {}) => {
+						const search =
+							typeof query === 'string' ? [...query.trim()].slice(0, 120).join('') : '';
+						const normalize = (value) =>
+							value
 								.normalize('NFD')
 								.replace(/\p{Diacritic}/gu, '')
-								.toLocaleLowerCase()
-								.includes(normalizedQuery)
-						);
-						return { query: safeQuery, results };
+								.toLocaleLowerCase();
+						const term = normalize(search);
+						const results = term
+							? excursions.filter((excursion) =>
+									normalize(
+										[excursion.name, excursion.description, ...excursion.categories].join(' ')
+									).includes(term)
+								)
+							: [];
+						return { source: excursionsSource, query: search, results };
 					}
-				});
-			} catch {
-				// WebMCP is optional; the regular page and its links work without it.
+				}
+			];
+
+			for (const tool of definitions) {
+				try {
+					await modelContext.registerTool({ ...tool, annotations: { readOnlyHint: true } });
+				} catch {
+					// A rejected registration should leave the other tools and HTML available.
+				}
 			}
 		})();
 	}

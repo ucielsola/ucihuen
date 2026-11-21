@@ -5,15 +5,17 @@ import GaleriaPage from '../components/GaleriaPage.astro';
 import { getMessages } from '../lib/messages';
 import { sliderUrl, sliderSrcset, modalUrl, lqipUrl } from '../lib/imagekit';
 import ImageKit from '@imagekit/nodejs';
+import { getCabins } from '$lib/data/stay';
 
 const PRIVATE_IMAGEKIT_KEY = import.meta.env.PRIVATE_IMAGEKIT_KEY;
 const locale = Astro.currentLocale || 'es';
 const m = getMessages(locale);
+const cabins = getCabins(locale);
 
 const sections = [
-	{ key: 'cab_1', path: '/int/cab_1/', headingKey: 'gallery_cab1_heading', subtitleKey: 'gallery_cab1_subtitle', altKey: 'alt_interior_cab1_photo', id: 'cab-1' },
-	{ key: 'cab_2', path: '/int/cab_2/', headingKey: 'gallery_cab2_heading', subtitleKey: 'gallery_cab2_subtitle', altKey: 'alt_interior_cab2_photo', id: 'cab-2' },
-	{ key: 'ext', path: '/ext/', headingKey: 'gallery_ext_heading', subtitleKey: 'gallery_ext_subtitle', altKey: 'alt_exterior_photo', id: undefined }
+	{ key: 'cab_1', path: '/int/cab_1/', headingKey: 'gallery_cab1_heading', subtitle: cabins[0].rooms.join(' | '), altKey: 'alt_interior_cab1_photo', id: 'cab-1' },
+	{ key: 'cab_2', path: '/int/cab_2/', headingKey: 'gallery_cab2_heading', subtitle: cabins[1].rooms.join(' | '), altKey: 'alt_interior_cab2_photo', id: 'cab-2' },
+	{ key: 'ext', path: '/ext/', headingKey: 'gallery_ext_heading', subtitle: m.gallery_ext_subtitle, altKey: 'alt_exterior_photo', id: undefined }
 ];
 
 const fallback = {
@@ -42,7 +44,7 @@ try {
 const slidesData = sections.map((sec, si) => ({
 	id: sec.id,
 	heading: m[sec.headingKey],
-	subtitle: m[sec.subtitleKey],
+	subtitle: sec.subtitle,
 	delay: 2300 + si * 100,
 	slides: (imagePaths[sec.key] || []).map((path, i) => ({
 		src: sliderUrl(path, 400),

@@ -27,7 +27,12 @@ const m = getMessages(locale);
 		<meta name="google-site-verification" content="HtkNKZnoCCzIf01im9a6t7ywPOF-Ya1JJKtMQGI7EAM" />
 		<link rel="preconnect" href="https://www.youtube-nocookie.com" />
 		<link rel="preconnect" href="https://i.ytimg.com" />
-		<link rel="alternate" type="text/markdown" title="LLM-friendly content" href="/llms.txt" />
+		<link rel="describedby" href="/llms.txt" />
+		{
+			locale === 'es' && currentPath === '/' && (
+				<link rel="alternate" type="text/markdown" href="/agent-home.md" />
+			)
+		}
 		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-RRDPW3W5X2"></script>
 		<script is:inline>
 			window.dataLayer = window.dataLayer || [];

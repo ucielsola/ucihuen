@@ -1,4 +1,5 @@
 ---
+import { amenityIcons } from '$lib/data/stay';
 import { getMessages } from '$lib/messages';
 
 interface Props {
@@ -8,24 +9,7 @@ interface Props {
 const { locale } = Astro.props;
 const m = getMessages(locale);
 
-const amenities = [
-	{ icon: 'mascota', label: m.amenity_pets },
-	{ icon: 'auto', label: m.amenity_parking },
-	{ icon: 'calefaccion', label: m.amenity_heating },
-	{ icon: 'wifi', label: m.amenity_wifi },
-	{ icon: 'parrilla', label: m.amenity_grill },
-	{ icon: 'agua', label: m.amenity_hot_water },
-	{ icon: 'tele', label: m.amenity_tv },
-	{ icon: 'higiene', label: m.amenity_bathroom_kit },
-	{ icon: 'sabanas', label: m.amenity_bedding },
-	{ icon: 'patio', label: m.amenity_patio },
-	{ icon: 'extintor', label: m.amenity_fire_extinguisher },
-	{ icon: 'secador', label: m.amenity_hair_dryer },
-	{ icon: 'cocina', label: m.amenity_kitchen_kit },
-	{ icon: 'fumadores', label: m.amenity_smoking },
-	{ icon: 'almohada', label: m.amenity_extra_pillows },
-	{ icon: 'botiquin', label: m.amenity_first_aid }
-];
+const amenities = Object.entries(amenityIcons).map(([key, icon]) => ({ icon, label: m[key] }));
 ---
 
 <div class="grid-wrapper" data-aria-show-less={m.aria_show_less} data-aria-show-more={m.aria_show_more}>
