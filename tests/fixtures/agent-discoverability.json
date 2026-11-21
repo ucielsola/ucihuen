@@ -39,7 +39,7 @@
 			"expected": [
 				"The larger cabin fits up to seven, has two floors and has two bedrooms.",
 				"The smaller cabin fits up to four, has one floor and is described with a kitchen-dining room and a living room with futons.",
-				"The smaller cabin's bedroom count needs confirmation because the listings disagree."
+				"The smaller cabin's bedroom count needs confirmation because the homepage and gallery disagree."
 			],
 			"unsupported": ["A confirmed bedroom count for the smaller cabin or unlisted floor area."],
 			"htmlSources": ["/", "/en", "/pt", "/galeria"]
@@ -49,12 +49,10 @@
 			"question": "Does the cabin for four have one or two bedrooms?",
 			"expected": [
 				"The bedroom count needs confirmation.",
-				"Airbnb describes two bedrooms and Booking.com describes one bedroom plus sofa beds.",
+				"The homepage describes two bedrooms and the gallery describes one.",
 				"Confirm the layout with Ucihuen through WhatsApp."
 			],
-			"unsupported": [
-				"A definitive bedroom count or a claim that both listings describe the same sleeping setup."
-			],
+			"unsupported": ["A definitive bedroom count or a claim that the homepage and gallery agree."],
 			"htmlSources": ["/", "/en", "/pt", "/contact"]
 		},
 		{

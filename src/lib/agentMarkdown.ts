@@ -10,6 +10,7 @@ const title = '# Cabañas Ucihuen';
 const summary =
 	'> Alquiler de cabañas para 4 y 7 personas en Lago Puelo, Chubut, Patagonia Argentina.';
 const location = m.faq_location_answer;
+const parkDistance = `${m.home_desc_2_before} ${m.home_desc_2_link}.`;
 const bookingNote =
 	'Los precios y la disponibilidad se consultan para las fechas y el número de huéspedes en los canales de reserva. El sitio no publica tarifas ni un calendario propio y no confirma reservas. El anuncio de Airbnb enlazado corresponde a la cabaña para 4 personas.';
 const bookingLinks = bookingOptions
@@ -26,7 +27,7 @@ export const llmsMarkdown = `${title}
 
 ${summary}
 
-${location} Para tarifas y disponibilidad, consultá los canales de reserva. Las herramientas WebMCP son de solo lectura.
+${location} ${parkDistance} Para tarifas y disponibilidad, consultá los canales de reserva. Las herramientas WebMCP son de solo lectura.
 
 ## Información para asistentes
 
@@ -55,7 +56,7 @@ const cabinSections = cabins
 		({ id, title, floors, rooms, bedrooms }) => `### ${title}
 
 ${floors}. ${rooms.join(', ')}. [Ver fotos](${sitePageUrl('/galeria')}#${id}).
-${bedrooms === null ? `\n${m.faq_bedrooms_answer}\n` : ''}`
+${bedrooms === null ? `\n${m.agent_bedroom_note}\n` : ''}`
 	)
 	.join('\n');
 
@@ -95,6 +96,8 @@ ${Object.keys(amenityIcons)
 
 ## Ubicación y acceso
 
+${parkDistance}
+
 - [Cómo llegar a Cabañas Ucihuen](${MAP_URL}): Buscá Los Alerces 880, Villa Turística Lago Puelo, Chubut, Argentina.
 - [Acceso al Parque Nacional Lago Puelo](${PARK_URL}/horarios-como-llegar): Información de Parques Nacionales sobre el acceso por la Ruta Provincial 16.
 
@@ -129,7 +132,7 @@ ${summary}
 
 ## Alojamiento
 
-${location}
+${location} ${parkDistance}
 
 ${cabins.map((cabin) => `- ${cabin.title}. ${cabin.floors}.`).join('\n')}
 
