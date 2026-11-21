@@ -13,8 +13,8 @@ const m = getMessages(locale);
 const cabins = getCabins(locale);
 
 const sections = [
-	{ key: 'cab_1', path: '/int/cab_1/', headingKey: 'gallery_cab1_heading', subtitle: cabins[0].rooms.join(' | '), altKey: 'alt_interior_cab1_photo', id: 'cab-1' },
-	{ key: 'cab_2', path: '/int/cab_2/', headingKey: 'gallery_cab2_heading', subtitle: cabins[1].rooms.join(' | '), altKey: 'alt_interior_cab2_photo', id: 'cab-2' },
+	{ key: 'cab_1', path: '/int/cab_1/', headingKey: 'gallery_cab1_heading', subtitle: cabins[0].gallerySubtitle, altKey: 'alt_interior_cab1_photo', id: 'cab-1' },
+	{ key: 'cab_2', path: '/int/cab_2/', headingKey: 'gallery_cab2_heading', subtitle: cabins[1].gallerySubtitle, altKey: 'alt_interior_cab2_photo', id: 'cab-2' },
 	{ key: 'ext', path: '/ext/', headingKey: 'gallery_ext_heading', subtitle: m.gallery_ext_subtitle, altKey: 'alt_exterior_photo', id: undefined }
 ];
 

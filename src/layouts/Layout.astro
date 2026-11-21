@@ -28,6 +28,7 @@ const m = getMessages(locale);
 		<link rel="preconnect" href="https://www.youtube-nocookie.com" />
 		<link rel="preconnect" href="https://i.ytimg.com" />
 		<link rel="describedby" href="/llms.txt" />
+		<link rel="describedby" href={localizeHref('/agents', locale)} />
 		{
 			locale === 'es' && currentPath === '/' && (
 				<link rel="alternate" type="text/markdown" href="/agent-home.md" />

@@ -211,12 +211,15 @@ test('sitemap lists all localized canonicals with reciprocal hreflang, and robot
 				assert.ok(html.includes(variant), path);
 			}
 			const prefix = index === 0 ? '' : `/${locales[index]}`;
-			assert.ok(html.includes(`href="${prefix}/agents"`), `footer from ${path}`);
+			assert.ok(
+				html.includes(`<link rel="describedby" href="${prefix}/agents"`),
+				`localized agent guide from ${path}`
+			);
 		}
 	}
 });
 
-test('booking and cabin facts agree across the published pages and references', async () => {
+test('booking facts and source-qualified cabin details appear in the published references', async () => {
 	const llms = await built('llms.txt');
 	const full = await built('llms-full.txt');
 	const booking = [
@@ -233,7 +236,6 @@ test('booking and cabin facts agree across the published pages and references', 
 	const spanish = JSON.parse(await read('../messages/es.json'));
 	for (const key of [
 		'faq_location_answer',
-		'faq_bedrooms_answer',
 		'faq_pets_answer',
 		'faq_breakfast_answer',
 		'faq_parking_answer',
@@ -242,8 +244,13 @@ test('booking and cabin facts agree across the published pages and references', 
 		assert.ok(full.includes(spanish[key]), key);
 	}
 	assert.match(full, /### Cabaña para 7 personas\n\nDos plantas\. 2 Habitaciones/);
-	assert.match(full, /### Cabaña para 4 personas\n\nUna planta\. Cocina-Comedor/);
-	assert.match(full, /a menos de 3 km del Parque Nacional Lago Puelo/);
+	const fourPersonCabin = full.split('### Cabaña para 4 personas\n\n')[1]?.split('\n## ')[0];
+	assert.ok(fourPersonCabin);
+	assert.match(fourPersonCabin, /^Una planta\. Cocina-Comedor, Living con futones, Baño\./);
+	assert.ok(fourPersonCabin.includes(spanish.agent_bedroom_note));
+	assert.match(fourPersonCabin, /la portada indica 2 habitaciones y la galería indica 1/);
+	assert.doesNotMatch(fourPersonCabin, /Airbnb|Booking\.com/);
+	assert.match(full, /A menos de 3 kilómetros, se encuentra el Parque Nacional Lago Puelo/);
 	assert.match(full, /El sitio no publica tarifas ni un calendario propio/);
 	assert.match(full, /Airbnb enlazado corresponde a la cabaña para 4 personas/);
 	for (let i = 1; i <= 10; i++) {
@@ -253,28 +260,54 @@ test('booking and cabin facts agree across the published pages and references', 
 
 	for (const locale of locales) {
 		const prefix = locale === 'es' ? '' : `/${locale}`;
-		const m = JSON.parse(await read(`../messages/${locale}.json`));
 		const home = await htmlFor(prefix || '/');
 		const contact = await htmlFor(prefix + '/contact');
-		const gallery = await htmlFor(prefix + '/galeria');
 		for (const html of [home, contact]) {
 			for (const url of booking) assert.ok(html.includes(`href="${url}"`), url);
 			assert.ok(htmlText(html).includes(phone));
 		}
-		assert.ok(htmlText(home).includes(m.faq_bedrooms_answer));
-		assert.ok(htmlText(home).includes(m.faq_capacity_answer));
-		const bedrooms = m.room_bedrooms_2;
-		const layouts = [
-			home.match(/href="[^"]*#cab-1"[^>]*>(.*?)<\/a>/s)?.[1],
-			home.match(/href="[^"]*#cab-2"[^>]*>(.*?)<\/a>/s)?.[1],
-			gallery.match(/<article id="cab-1"[^>]*>.*?<h3[^>]*>(.*?)<\/h3>/s)?.[1],
-			gallery.match(/<article id="cab-2"[^>]*>.*?<h3[^>]*>(.*?)<\/h3>/s)?.[1]
+	}
+});
+
+test('visitor cabin cards, gallery, FAQ and footer keep their original localized presentation', async () => {
+	const bedrooms = {
+		es: ['2 Habitaciones', '1 Habitación'],
+		en: ['2 Bedrooms', '1 BEDROOM'],
+		pt: ['2 Quartos', '1 Quarto']
+	};
+	const faqTopics = ['location', 'capacity', 'pets', 'wifi', 'booking', 'breakfast', 'parking'];
+
+	for (const locale of locales) {
+		const prefix = locale === 'es' ? '' : `/${locale}`;
+		const m = JSON.parse(await read(`../messages/${locale}.json`));
+		const home = await htmlFor(prefix || '/');
+		const gallery = await htmlFor(prefix + '/galeria');
+		const homeCard = home.match(/href="[^"]*#cab-2"[^>]*>(.*?)<\/a>/s)?.[1];
+		const gallerySubtitle = gallery.match(/<article id="cab-2"[^>]*>.*?<h3[^>]*>(.*?)<\/h3>/s)?.[1];
+		assert.ok(homeCard?.includes(bedrooms[locale][0]), `homepage bedrooms in ${locale}`);
+		assert.equal(gallerySubtitle, m.gallery_cab2_subtitle);
+		assert.equal(gallerySubtitle.split(' | ')[0], bedrooms[locale][1]);
+		if (locale === 'en') assert.ok(homeCard.includes('Cabin for 4 guests'));
+
+		const questions = [
+			...home.matchAll(/<summary class="faq__question"[^>]*>\s*<span[^>]*>([^<]+)<\/span>/g)
 		];
-		for (const [index, layout] of layouts.entries()) {
-			assert.ok(layout, locale);
-			assert.equal(layout.includes(bedrooms), index % 2 === 0);
-			assert.ok(!layout.includes(m.room_bedrooms_1));
+		assert.deepEqual(
+			questions.map(([, question]) => question),
+			faqTopics.map((key) => m[`faq_${key}_question`])
+		);
+		for (const topic of faqTopics) {
+			assert.ok(htmlText(home).includes(m[`faq_${topic}_answer`]), `FAQ ${topic} in ${locale}`);
 		}
+		assert.ok(!htmlText(home).includes(m.agent_bedroom_note));
+		assert.ok(!htmlText(gallery).includes(m.agent_bedroom_note));
+
+		const footerNav = home.match(/<nav class="trust-links"[^>]*>(.*?)<\/nav>/s)?.[1];
+		assert.ok(footerNav);
+		assert.deepEqual(
+			[...footerNav.matchAll(/href="([^"]+)"/g)].map(([, href]) => href),
+			['/about', '/contact', '/privacy'].map((path) => prefix + path)
+		);
 	}
 });
 
@@ -363,7 +396,9 @@ test('built WebMCP callbacks match the localized guide and publish read-only sit
 				[4, null]
 			]
 		);
-		assert.equal(capacity.bedroomNote, m.faq_bedrooms_answer);
+		assert.equal(capacity.bedroomNote, m.agent_bedroom_note);
+		assert.doesNotMatch(capacity.bedroomNote, /Airbnb|Booking\.com/);
+		assert.ok(!capacity.cabins[1].rooms.includes(m.room_bedrooms_2));
 		const amenities = await stay.execute({ topic: 'amenities' });
 		assert.ok(amenities.amenityList.includes(m.amenity_pets));
 		assert.ok(amenities.amenityList.includes(m.amenity_parking));

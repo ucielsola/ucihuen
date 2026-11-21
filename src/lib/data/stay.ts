@@ -5,31 +5,39 @@ const cabins = [
 		id: 'cab-1',
 		capacity: 7,
 		bedrooms: 2,
+		homepageBedrooms: 2,
+		gallerySubtitleKey: 'gallery_cab1_subtitle',
 		roomKeys: ['room_living_dining', 'room_kitchen', 'room_bathroom']
 	},
 	{
 		id: 'cab-2',
 		capacity: 4,
 		bedrooms: null,
+		homepageBedrooms: 2,
+		gallerySubtitleKey: 'gallery_cab2_subtitle',
 		roomKeys: ['room_kitchen_dining', 'room_living_futons', 'room_bathroom']
 	}
 ];
 
 export function getCabins(locale: string) {
 	const m = getMessages(locale);
-	return cabins.map(({ id, capacity, bedrooms, roomKeys }) => ({
-		id,
-		capacity,
-		bedrooms,
-		title: t(locale, 'cabin_title', { capacity }),
-		mobileGuests: t(locale, 'cabin_mobile_guests', { capacity }),
-		floors: m[`cabin_${capacity}_floors`],
-		alt: m[`cabin_${capacity}_alt`],
-		rooms: [
-			...(bedrooms === null ? [] : [m[`room_bedrooms_${bedrooms}`]]),
-			...roomKeys.map((key) => m[key])
-		]
-	}));
+	return cabins.map(
+		({ id, capacity, bedrooms, homepageBedrooms, gallerySubtitleKey, roomKeys }) => {
+			const rooms = roomKeys.map((key) => m[key]);
+			return {
+				id,
+				capacity,
+				bedrooms,
+				title: t(locale, 'cabin_title', { capacity }),
+				mobileGuests: t(locale, 'cabin_mobile_guests', { capacity }),
+				floors: m[`cabin_${capacity}_floors`],
+				alt: m[`cabin_${capacity}_alt`],
+				rooms: bedrooms === null ? rooms : [m[`room_bedrooms_${bedrooms}`], ...rooms],
+				homepageRooms: [m[`room_bedrooms_${homepageBedrooms}`], ...rooms],
+				gallerySubtitle: m[gallerySubtitleKey]
+			};
+		}
+	);
 }
 
 export const amenityIcons = {
