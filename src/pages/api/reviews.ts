@@ -14,10 +14,11 @@ export const GET: APIRoute = async () => {
 				'Cache-Control': 'public, s-maxage=600, stale-while-revalidate=60'
 			}
 		});
-	} catch {
+	} catch (error) {
+		console.error('Unable to load Google reviews:', error);
 		return new Response(JSON.stringify({ reviews: [] }), {
 			status: 502,
-			headers: { 'Content-Type': 'application/json' }
+			headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }
 		});
 	}
 };

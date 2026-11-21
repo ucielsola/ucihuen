@@ -1,6 +1,7 @@
-const UCIEL_API_KEY = import.meta.env.UCIEL_API_KEY;
+import { getSecret } from 'astro:env/server';
+
 const CACHE_TTL_MS = 10 * 60 * 1000;
-const API_URL = 'http://api.uciel.xyz/api/google-reviews/reviews';
+const API_URL = 'https://api.uciel.xyz/api/google-reviews/reviews';
 
 interface Review {
 	autor_name: string;
@@ -58,10 +59,13 @@ function mapApiReview(r: ApiReview): Review {
 }
 
 async function fetchApiReviews(): Promise<Review[]> {
+	const apiKey = getSecret('UCIEL_API_KEY');
+	if (!apiKey) throw new Error('UCIEL_API_KEY is missing');
+
 	const res = await fetch(API_URL, {
-		headers: { Authorization: `Bearer ${UCIEL_API_KEY}` }
+		headers: { Authorization: `Bearer ${apiKey}` }
 	});
-	if (!res.ok) return [];
+	if (!res.ok) throw new Error(`Google reviews API returned HTTP ${res.status}`);
 
 	const data: ReviewsResponse = await res.json();
 	return data.reviews.map(mapApiReview);
@@ -71,13 +75,7 @@ export async function getReviews(): Promise<ReviewsResult> {
 	const now = Date.now();
 	if (cache.data && cache.expires > now) return cache.data;
 
-	let reviews: Review[] = [];
-	try {
-		reviews = await fetchApiReviews();
-	} catch {
-		// fallback to empty
-	}
-
+	const reviews = await fetchApiReviews();
 	const filtered = reviews.filter((r) => r.review_text && Number(r.review_rating) >= 4);
 
 	const result: ReviewsResult = { reviews: filtered };

@@ -23,7 +23,6 @@
 	let reviews = $state<Review[]>([]);
 	let loaded = $state(BATCH);
 	let loading = $state(true);
-	let failed = $state(false);
 
 	$effect(() => {
 		let cancelled = false;
@@ -33,14 +32,11 @@
 				if (!response.ok) throw new Error('Unable to load reviews');
 				return (await response.json()) as { reviews: Review[] };
 			})
-			.then((data) => {
-				if (!cancelled) reviews = data.reviews;
-			})
-			.catch(() => {
-				if (!cancelled) failed = true;
-			})
-			.finally(() => {
-				if (!cancelled) loading = false;
+			.catch(() => ({ reviews: [] }))
+			.then(({ reviews: fetchedReviews }) => {
+				if (cancelled) return;
+				reviews = fetchedReviews;
+				loading = false;
 			});
 
 		return () => {
@@ -108,7 +104,7 @@
 	</div>
 {:else if loading}
 	<p class="reviews-status" aria-live="polite">{loadingText}</p>
-{:else if failed}
+{:else}
 	<p class="reviews-status" role="status">{unavailableText}</p>
 {/if}
 
